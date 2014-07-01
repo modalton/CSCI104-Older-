@@ -103,8 +103,8 @@ template <class T>
 T* Set<T>::next (){
 	first_num = last_num%internalStorage.size();
 	last_num = (last_num+1)%internalStorage.size();
-//	std:: cout << "First num-" << first_num <<"   last num-" << last_num<<"\n";
-	return &internalStorage.get((last_num%internalStorage.size()));
+std:: cout << "First num-" << first_num <<"   last num-" << last_num%internalStorage.size()<< "\n";
+	return &internalStorage.get((last_num)%internalStorage.size());
 }
       /* Returns the pointer to an element of the set different from all 
          the ones that "first" and "next" have returned so far. 
