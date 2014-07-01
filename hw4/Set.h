@@ -57,10 +57,15 @@ class Set {
          the ones that "first" and "next" have returned so far. 
          Should return NULL if there are no more element. */
 
+    T* commonsense(int pos);
+
+    int fnum();
+
   private:
     AList <T> internalStorage;
     int first_num;
     int last_num;
+
     // other private variables you think you need.
 };
 

@@ -91,5 +91,21 @@ T const& AList<T>::get (int position) const{
 
 
 
-//template <class T>
-//AList& AList<T>::operator=( AList<T> const&){}
+/*template <class T>
+AList& AList<T>::operator=( AList<T> const&){
+		if(capacity < ){
+		T* temp= new T[_size]; 
+// maybe later insert copy constructor
+			for(int i=0; i < _size; i++)
+			{ temp[i] = head[i];}
+
+//delete and redeclare larger head
+		delete[] head;
+		head = new T[_size*2];
+		for(int i=0; i < _size; i++)
+			{head[i] = temp[i];}
+		_size = _size*2;	
+		delete temp;}
+		
+}
+*/

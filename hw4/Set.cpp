@@ -11,7 +11,7 @@ Set<T>::~Set(){}
 
 template <class T> 
 void Set<T>::add(const T & other){
-	if(this->contains(other)){throw;}
+	if(this->contains(other)){ throw;}
 	internalStorage.insert(0, other);
 	}   //throw exception if alread in set
 
@@ -21,7 +21,7 @@ void Set<T>::remove (const T & item){
 
 	for(int i =0; i<internalStorage.capacity;i++)
 	{if(internalStorage.get(i)==item){ internalStorage.remove(i);  return;}
-// must return b/c original .capacity called is larger before .remove can cause seg fault
+
 	}
 
 }
@@ -93,7 +93,7 @@ Set<T> Set<T>::setUnion (const Set<T> & other) const{
 template <class T>
 T* Set<T>::first (){
 	if(internalStorage.capacity==0){return NULL;}
-	else{return internalStorage.get(0);} //insert RAND
+	else{return &internalStorage.get(0);} //insert RAND
 }
       /* Returns the pointer to some element of the set, 
          which you may consider the "first" element.
@@ -101,9 +101,18 @@ T* Set<T>::first (){
 
 template <class T>
 T* Set<T>::next (){
-	return internalStorage.get(last_num+first_num%internalStorage.size())
-	last_num++;
+	first_num = last_num%internalStorage.size();
+	last_num = (last_num+1)%internalStorage.size();
+//	std:: cout << "First num-" << first_num <<"   last num-" << last_num<<"\n";
+	return &internalStorage.get((last_num%internalStorage.size()));
 }
       /* Returns the pointer to an element of the set different from all 
          the ones that "first" and "next" have returned so far. 
          Should return NULL if there are no more element. */
+
+template <class T>
+T* Set<T>::commonsense(int pos){ return &internalStorage.get(pos);}
+
+template<class T>
+int Set<T>::fnum(){return last_num;}
+

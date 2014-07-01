@@ -70,7 +70,7 @@ class AList
          deep copies of a list yet.  Thus by making it's prototype private, the
          compiler will enforce that no one ever be allowed to make a copy of a AList */
 
-      AList& operator=(const AList&);
+     // AList& operator=(const AList&);
       /* This is a copy constructor and we likely haven't learned how to make
          deep copies of a list yet.  Thus by making it's prototype private, the
          compiler will enforce that no one ever be allowed to make a copy of a AList */

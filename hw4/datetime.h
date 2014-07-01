@@ -39,10 +39,15 @@ struct DateTime
    */
   friend std::ostream& operator<<(std::ostream& os, const DateTime& other);
 
-  /* Add data members here -- they can all be public 
-   * which is why we've made this a struct */
+  int h;
+  int m;
+  int s;
+  int yr;
+  int mn;
+  int d;
 
 
 };
+#include datetime.cpp"
 
 #endif

@@ -83,8 +83,8 @@ class User {
 
  private:
    std::string username;
-   Set<User> user_followers;
-   Set<User> user_following;
+   Set<User*> user_followers;
+   Set<User*> user_following;
 
 
  /* Add appropriate data members here */
