@@ -1,6 +1,7 @@
 #ifndef USER_H
 #define USER_H
 
+#include "Tweet.h"
 #include <string>
 /* Add appropriate includes for your data structures here */
 
@@ -77,14 +78,15 @@ class User {
    * @return vector of pointers to all the tweets from this user
    *         and those they follow in timestamp order
    */
-  AList<Tweet*> getFeed();
+ void getFeed();
 
      bool operator==(const User& other)const;
-
+AList<Tweet*> user_tweets;//MOVE
  private:
    std::string username;
    Set<User*> user_followers;
    Set<User*> user_following;
+   
 
 
  /* Add appropriate data members here */

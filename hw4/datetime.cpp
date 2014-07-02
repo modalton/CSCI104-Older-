@@ -1,4 +1,7 @@
  
+  #include "datetime.h"
+  DateTime::DateTime(){}
+
   DateTime::DateTime(int hh, int mm, int ss, int year, int month, int day){
  	h= hh;
 	m = mm;
@@ -21,5 +24,6 @@
 
  bool DateTime::operator>(const DateTime& other){
  	if(s==other.s && d==other.d &&m==other.m && h==other.h && mn==other.mn && yr==other.yr){return false;}
- 	if(this<other ==false){return true;}
+ 	if(*this<other ==false){return true;}
+  return false;
  }

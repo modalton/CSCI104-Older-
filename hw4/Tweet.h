@@ -70,6 +70,7 @@ class Tweet
  private:
   DateTime _time;
   std::string _text;
+  User* _poster;
 
   /* Add any other data members you need here */
 
