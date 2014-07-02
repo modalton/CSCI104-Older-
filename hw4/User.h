@@ -77,7 +77,12 @@ class User {
    *
    * @return vector of pointers to all the tweets from this user
    *         and those they follow in timestamp order
+
    */
+ void updateFeed(Tweet* t);
+
+ void pushTweet(Tweet* t);
+
  void getFeed();
 
      bool operator==(const User& other)const;
@@ -86,6 +91,7 @@ AList<Tweet*> user_tweets;//MOVE
    std::string username;
    Set<User*> user_followers;
    Set<User*> user_following;
+   AList<Tweet*> feed;
    
 
 

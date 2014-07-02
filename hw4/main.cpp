@@ -53,7 +53,6 @@ for(int i=0; i<members; i++){
 	int temp2;
 
 	for(int k=0; k<members; k++){
-			cout<< (*all_users.commonsense(k))->name() <<"\n";
 			if(((*all_users.commonsense(k))->name()) == guywithfriends){
 				 temp = k;
 				 break;}}
@@ -62,8 +61,7 @@ for(int i=0; i<members; i++){
 	while(getline(split,amigo, ' ')){
 				for(int j=0; j<members;j++){
 					if((*all_users.next())->name()==amigo){temp2 = all_users.fnum();
-					(*all_users.commonsense(temp))->addFollowing((*all_users.commonsense(temp2)));
-					(*all_users.commonsense(temp2))->addFollower((*all_users.commonsense(temp)));}
+					(*all_users.commonsense(temp))->addFollowing((*all_users.commonsense(temp2)));}
 				}}}
 
 
@@ -85,9 +83,9 @@ while(getline(file1,line)){
 							}
 
 for (int i = 0; i < members; ++i)
-{
+{	
 	(*all_users.commonsense(i))->getFeed();
-	(*all_users.commonsense(i))->tweets();
+	
 }
 
 }

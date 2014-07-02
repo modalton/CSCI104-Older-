@@ -43,6 +43,7 @@ class Tweet
    * @return result of less-than comparison of tweet's timestamp
    */
   bool operator<(const Tweet& other){
+    std::cout<<"inhere\n";
     return _time < other._time;
   }
 
@@ -62,6 +63,7 @@ class Tweet
    * @return the ostream passed in as an argument
    */
   friend std::ostream& operator<<(std::ostream& os, const Tweet& t);
+  
 
   /* Create any other public or private helper functions you deem 
      necessary */

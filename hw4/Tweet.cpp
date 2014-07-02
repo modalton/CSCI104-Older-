@@ -6,9 +6,17 @@
  	_text= text;
 
  	user->addTweet(this);
+ 	user->pushTweet(this);
 
  }
 
 DateTime const & Tweet::time() const{return _time;}
 
 std::string const & Tweet::text() const{ return _text;}
+
+
+std::ostream& operator<<(std::ostream& os, const Tweet& t){
+	os<< t.time() << " "<< (t._poster)->name() << " " << t.text() << "\n";
+	return os;
+}
+
