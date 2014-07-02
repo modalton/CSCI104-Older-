@@ -27,15 +27,11 @@ void User::addFollower(User* u){ std::cout<<name() << " is followed by->" << u->
 
 void User::addTweet(Tweet* T){user_tweets.insert(0,T); }
 
-AList<Tweet*> User::tweets(){//return user_tweets;
+AList<Tweet*> User::tweets(){return user_tweets; //WHY DID I NEED COPY CONSTRUCTOR/ = op FOR THIS 
 }
 
 void User::getFeed(){
-	std::cout<<"USER: " << name()<<"\n";
-	for(int i=0;i<user_tweets.size();i++){
-		std::cout<<(user_tweets.get(i))->text()<<"\n";
+	for(int i=0; i<user_following.size(); i++){
+		user_following.commonsense(i);
 	}
-	std::cout<<"\n";
-//need to return pointer to new one	
-//	return user_tweets;
 }

@@ -16,11 +16,11 @@ int AList<T>::size() const{
 
 template <class T> //why doesnt this work!!!
 AList<T>::AList(const AList<T>& other){
-   _size = other._size;
-   delete [] this->head;
+   _size = other.size();
+  capacity = other.size();
    head = new T[_size];
    for(int i=0; i < _size; i++){
-     head[i] = other.head[i];
+     head[i] = other.get(i);
    }
 }
 
@@ -31,7 +31,7 @@ void AList<T>::insert (int position, const T & val){
 
 
 //if it needs to make a bigger array does so here
-	if(capacity+1 == _size){
+	if(capacity+1 <= _size){
 		T* temp= new T[_size]; 
 // maybe later insert copy constructor
 			for(int i=0; i < _size; i++)
@@ -79,8 +79,7 @@ void AList<T>::set (int position, const T & val){
 template <class T>
 T& AList<T>::get (int position){
 		if(position < 0 || position>capacity){throw std::out_of_range("T& AList<T>::get (int position)");} 
-		return head[position]; 
-}
+		return head[position]; }
 
 
 template <class T>
@@ -91,21 +90,21 @@ T const& AList<T>::get (int position) const{
 
 
 
-/*template <class T>
-AList& AList<T>::operator=( AList<T> const&){
-		if(capacity < ){
-		T* temp= new T[_size]; 
-// maybe later insert copy constructor
-			for(int i=0; i < _size; i++)
-			{ temp[i] = head[i];}
-
-//delete and redeclare larger head
+template <class T>
+AList<T>& AList<T>::operator=( AList<T> const& other){
 		delete[] head;
-		head = new T[_size*2];
-		for(int i=0; i < _size; i++)
-			{head[i] = temp[i];}
-		_size = _size*2;	
-		delete temp;}
+		head = new T[other.size()];
+		_size = other.size();
+		capacity = other.size();
+		for (int i = 0; i < capacity; ++i)
+		{
+			head[i]= other.get[i];
+		}}
+
+
+
+
+
+
 		
-}
-*/
+

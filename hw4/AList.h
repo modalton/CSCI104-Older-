@@ -54,6 +54,8 @@ class AList
       /* Returns a const reference to the item at the given position.
          Your function should throw an exception if position is
          outside the legal range. */
+    AList& operator=(const AList& other);
+    AList(const AList& other);
 
 
       /* Head pointer to the 1st item in your linked list */
@@ -65,12 +67,11 @@ class AList
     private:   
    
       T *head;
-      AList(const AList& other);
-      /* This is a copy constructor and we likely haven't learned how to make
+            /* This is a copy constructor and we likely haven't learned how to make
          deep copies of a list yet.  Thus by making it's prototype private, the
          compiler will enforce that no one ever be allowed to make a copy of a AList */
 
-     // AList& operator=(const AList&);
+
       /* This is a copy constructor and we likely haven't learned how to make
          deep copies of a list yet.  Thus by making it's prototype private, the
          compiler will enforce that no one ever be allowed to make a copy of a AList */
