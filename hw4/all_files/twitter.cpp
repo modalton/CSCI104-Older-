@@ -14,12 +14,13 @@
 
 using namespace std;
 
-int main(){
+int main(int argc, char* argv[]){
 
 string line;
 int members;
 Set<User*> all_users;
-ifstream file("twitter.dat");   //CHANGE TO ARGV/C
+ifstream file(argv[1]);   
+if(file.fail()){cout<<"Please input proper file\n";exit(1);}
 getline(file,line);
 
 //read first line to see how many memebers 
@@ -49,7 +50,7 @@ file.close();
 
 //we reopen the file to go through again and add the friends
 //did this bc we don't want to instantiate anyone who isnt a user
-ifstream file1("twitter.dat");
+ifstream file1(argv[1]);
 getline(file1,line);
 for(int i=0; i<members; i++){
 
@@ -97,6 +98,7 @@ while(getline(file1,line)){
 			DateTime* temp_date = new DateTime(h,mn,s,y,m,d);
 			Tweet* made_tweet = new Tweet(*all_users.commonsense(i), *temp_date, text);
 			made_tweet->PushTweet();
+
 														}
 								}
 							}
