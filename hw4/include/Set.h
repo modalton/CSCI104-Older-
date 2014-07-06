@@ -2,6 +2,7 @@
 #define SET_h 
 #include "AList.h"
 
+
 template <class T>
 class Set {
   public: 
@@ -68,6 +69,6 @@ class Set {
 
     // other private variables you think you need.
 };
-
+#include "SetImpl.h"
 
 #endif

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include "datetime.h"
+#include "User.h"
+#include "AList.h"
 
 /* Forward declaration */
 class User;
