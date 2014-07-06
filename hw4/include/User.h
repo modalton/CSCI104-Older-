@@ -2,6 +2,8 @@
 #define USER_H
 
 #include "Tweet.h"
+#include "Set.h"
+#include "AList.h"
 #include <string>
 /* Add appropriate includes for your data structures here */
 

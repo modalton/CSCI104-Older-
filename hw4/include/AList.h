@@ -82,6 +82,6 @@ class AList
       /* You may add further private data fields or helper methods if 
          you choose. You should not alter the public signature. */
 };
-#include "AList.cpp"
+#include "AListImpl.h"
 
 #endif
