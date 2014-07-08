@@ -5,11 +5,12 @@
 #include <QLabel>
 #include <string>
 #include <QString>
+#include <QListWidget>
 #include <QVBoxLayout>
 #include "gui_tweet.h"
 
 
-class feed_widget : public QWidget // you can also try QMainWindow
+class feed_widget : public QListWidget // you can also try QMainWindow
 {
 	Q_OBJECT
 
@@ -17,15 +18,18 @@ class feed_widget : public QWidget // you can also try QMainWindow
 	//feed_widget(test_user* test);
 	feed_widget();
 	void append_feed(int pos, std::string input);
-	QVBoxLayout* final_widget;
+
+	QListWidget* final_widget;
+
+	
+
 		
 
 
 
 	private:
-	//test_user* my_guy;
-	
-	gui_tweet* setup;
+	QVBoxLayout * omg_qt_rules;
+	gui_tweet* setup; //change to dyamic in .cpp
 
 
 };

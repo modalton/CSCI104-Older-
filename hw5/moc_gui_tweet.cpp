@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'gui_tweet.h'
 **
-** Created: Sun Jul 6 14:41:48 2014
+** Created: Mon Jul 7 21:20:14 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -50,7 +50,7 @@ const QMetaObjectExtraData gui_tweet::staticMetaObjectExtraData = {
 };
 
 const QMetaObject gui_tweet::staticMetaObject = {
-    { &QLabel::staticMetaObject, qt_meta_stringdata_gui_tweet,
+    { &QWidget::staticMetaObject, qt_meta_stringdata_gui_tweet,
       qt_meta_data_gui_tweet, &staticMetaObjectExtraData }
 };
 
@@ -68,12 +68,12 @@ void *gui_tweet::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_gui_tweet))
         return static_cast<void*>(const_cast< gui_tweet*>(this));
-    return QLabel::qt_metacast(_clname);
+    return QWidget::qt_metacast(_clname);
 }
 
 int gui_tweet::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QLabel::qt_metacall(_c, _id, _a);
+    _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     return _id;

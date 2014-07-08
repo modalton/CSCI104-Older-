@@ -3,6 +3,8 @@
 #include "user_win.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <iostream>
+
 
 using namespace std;
 
@@ -35,7 +37,8 @@ user_win::user_win(q_user* the_user) : QWidget()
 
 		QVBoxLayout *layout = new QVBoxLayout;
 		layout->addLayout(topbar);
-		layout->addLayout(feed->final_widget); //maybe change to function
+		layout->addWidget(feed->final_widget); 
+		std::cout << feed->final_widget;
 		layout->addWidget(switch_feeds);
 		layout->addWidget(tweet_text);
 		layout->addWidget(post_tweet);
@@ -65,7 +68,7 @@ void user_win::closeEvent(QCloseEvent *event)
 void user_win::tweet_Click()
 {
 	main_user->new_tweet();
-	feed->append_feed(1, (tweet_text->toPlainText()).toStdString());
+	feed->append_feed(0, (tweet_text->toPlainText()).toStdString());
 }
 
 void user_win::follow_Click()

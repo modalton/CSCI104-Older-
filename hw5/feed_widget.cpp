@@ -12,16 +12,25 @@ feed_widget::feed_widget(test_user* test){
 }*/
 
 feed_widget::feed_widget(){
-	setup = new gui_tweet[4];
-	final_widget = new QVBoxLayout;
+	omg_qt_rules = new QVBoxLayout;
 
-	setup[0].add_tweet("works before");
-	final_widget->addWidget(setup[0].get_display());
+	setup = new gui_tweet[10]; //change to dynamic!
+	final_widget = new QListWidget;
+	final_widget->addItem
 
-	//setLayout(final_widget);
+	     QListWidgetItem* lwi = new QListWidgetItem;
+        lwi->setSizeHint( final_widget->sizeHint() );
+        lw->addItem(lwi);
+        lw->setItemWidget(lwi, w);
+
+
+	
+
 }
 
 void feed_widget::append_feed(int pos, std::string input){
 	setup[pos].add_tweet(input);
-	final_widget->addWidget(setup[pos].get_display()); //FYI if added in same place it still posts to QVBOX
+	omg_qt_rules->addWidget(setup[pos]);
+	final_widget->visualItemRect(setup[pos].get_display()); //FYI if added in same place it still posts to QVBOX
 }
+
