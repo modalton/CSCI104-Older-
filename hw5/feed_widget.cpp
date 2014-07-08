@@ -16,12 +16,7 @@ feed_widget::feed_widget(){
 
 	setup = new gui_tweet[10]; //change to dynamic!
 	final_widget = new QListWidget;
-	final_widget->addItem
 
-	     QListWidgetItem* lwi = new QListWidgetItem;
-        lwi->setSizeHint( final_widget->sizeHint() );
-        lw->addItem(lwi);
-        lw->setItemWidget(lwi, w);
 
 
 	
@@ -30,7 +25,11 @@ feed_widget::feed_widget(){
 
 void feed_widget::append_feed(int pos, std::string input){
 	setup[pos].add_tweet(input);
-	omg_qt_rules->addWidget(setup[pos]);
-	final_widget->visualItemRect(setup[pos].get_display()); //FYI if added in same place it still posts to QVBOX
+	
+	QListWidgetItem * temp = new QListWidgetItem();
+	final_widget->addItem(temp);
+	final_widget->setItemWidget(temp, setup[pos].get_display());
+
+	//final_widget->visualItemRect(setup[pos].get_display()); //FYI if added in same place it still posts to QVBOX
 }
 

@@ -5,11 +5,11 @@
 #include <QLabel>
 #include <string>
 #include <QString>
-#include <QListWidgetItem>
 
 
 
-class gui_tweet // you can also try QMainWindow
+
+class gui_tweet : QWidget// you can also try QMainWindow
 {
 	Q_OBJECT
 
@@ -17,14 +17,14 @@ class gui_tweet // you can also try QMainWindow
 		gui_tweet(std::string text);
 		gui_tweet();
 		void add_tweet(std::string text);
-		QListWidgetItem* get_display();
+		QLabel* get_display();
 		
 
 
 
 	private:
 	QString my_text;
-	QListWidgetItem* display;
+	QLabel* display;
 
 
 };
