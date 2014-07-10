@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'q_user.h'
 **
-** Created: Thu Jul 10 11:42:17 2014
+** Created: Thu Jul 10 13:52:17 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -78,8 +78,6 @@ void *q_user::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_q_user))
         return static_cast<void*>(const_cast< q_user*>(this));
-    if (!strcmp(_clname, "User"))
-        return static_cast< User*>(const_cast< q_user*>(this));
     return QObject::qt_metacast(_clname);
 }
 

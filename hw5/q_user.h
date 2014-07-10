@@ -20,7 +20,7 @@ class q_user : public QObject  // you can also try QMainWindow
 		q_user();
 		~q_user();
 		feed_widget* feed;
-
+		User* real_user;
 	public slots:
 		void new_tweet(std::string text);
 		void following_new();
@@ -30,7 +30,7 @@ class q_user : public QObject  // you can also try QMainWindow
 
 
 	private:
-		User* real_user;
+		
 
 	
 

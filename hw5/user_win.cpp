@@ -48,7 +48,9 @@ void user_win::change_user(q_user* new_q){
 }
 
 void user_win::reinitialize(q_user* maker){
+
 	main_user = maker;
+
 	//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");
 		switch_feeds = new QPushButton("Switch Feeds");
@@ -57,7 +59,7 @@ void user_win::reinitialize(q_user* maker){
 		tweet_text = new QPlainTextEdit;
 	
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
-	
+
 
 		QVBoxLayout *layout = new QVBoxLayout;
 		layout->addWidget(main_user->feed->final_widget); 
@@ -65,6 +67,7 @@ void user_win::reinitialize(q_user* maker){
 		layout->addWidget(tweet_text);
 		layout->addWidget(post_tweet);
 		setLayout(layout);
+
 
 }
 

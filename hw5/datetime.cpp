@@ -1,5 +1,6 @@
  
   #include "datetime.h"
+  #include <sstream>
   DateTime::DateTime(){
   h= 0;
   m = 0;
@@ -18,6 +19,16 @@
  	mn= month;
  	d=day;
 	  }
+
+  std::string DateTime::DateTime_string(){
+    string Result;          // string which will contain the result
+
+    ostringstream convert;   // stream used for the conversion
+
+    convert << Number;      // insert the textual representation of 'Number' in the characters in the stream
+
+    Result = convert.str(); // set 'Result' to the contents of the stream
+  }
 
 
  bool DateTime::operator<(const DateTime& other){

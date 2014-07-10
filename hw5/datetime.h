@@ -1,6 +1,7 @@
 #ifndef DATETIME_H
 #define DATETIME_H
 #include <iostream>
+#include <string>
 
 /**
  * Models a timestamp in format YYYY-MM-DD HH:MM:SS 
@@ -16,6 +17,8 @@ struct DateTime
    * Another constructor 
    */
   DateTime(int hh, int mm, int ss, int year, int month, int day);
+
+  std::string DateTime_string();
 
   /**
    * Return true if the timestamp is less-than other's

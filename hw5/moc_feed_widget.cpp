@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'feed_widget.h'
 **
-** Created: Thu Jul 10 11:12:39 2014
+** Created: Thu Jul 10 13:52:02 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

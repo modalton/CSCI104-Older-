@@ -13,14 +13,17 @@
 #include "Tweet.cpp"
 #include <cstddef>
 #include "one_more_class.cpp"
+#include <map>
+
 
 
 using namespace std;
 int main(int argc, char *argv[]) {
+	QApplication app(argc, argv); 
 
 	string line;
 	int members;
-	Set<q_user*> all_users;
+	map<string, q_user*> all_users;
 	ifstream file("twitter.dat");   //CHANGE TO ARGV/C
 	getline(file,line);
 	stringstream ss(line); 
@@ -42,7 +45,7 @@ int main(int argc, char *argv[]) {
 		getline(split,name, ' ');
 
 		q_user* bob= new q_user(name);
-		all_users.add(bob);
+		all_users.insert(pair<string,q_user*>(name, bob));
 	}
 	file.close();
 
@@ -59,22 +62,13 @@ int main(int argc, char *argv[]) {
 
 		string guywithfriends;
 		getline(split,guywithfriends, ' ');
-		int temp;
-		int temp2;
-
-	//go through all_users to find corresponding user
-		for(int k=0; k<members; k++){
-				if(((*all_users.commonsense(k))->name()) == guywithfriends){
-					 temp = k;
-					 break;}}
+		
 
 	//go through rest of line to add friends to aforementioned user
 		string amigo;
 		while(getline(split,amigo, ' ')){
-					for(int j=0; j<members;j++){
-						if((*all_users.next())->name()==amigo){temp2 = all_users.fnum();
-						(*all_users.commonsense(temp))->addFollowing((*all_users.commonsense(temp2)));}
-					}}}
+					(*all_users.find(guywithfriends)).second->real_user->addFollowing((*all_users.find(amigo)).second->real_user);
+					}}
 
 	//parse through rest of the file (aka tweets)
 	//set up a sscanf with fail check to read each part into datetime/tweet constructor
@@ -91,26 +85,25 @@ int main(int argc, char *argv[]) {
 		string text = content;
 		string tweeter = person;
 
-		for(int i=0; i<members;i++){
-			if((*all_users.commonsense(i))->name() == tweeter){
-				DateTime* temp_date = new DateTime(h,mn,s,y,m,d);
-				Tweet* made_tweet = new Tweet(*all_users.commonsense(i), *temp_date, text);
+		DateTime* temp_date = new DateTime(h,mn,s,y,m,d);
+		Tweet* made_tweet = new Tweet((*all_users.find(tweeter)).second->real_user, *temp_date, text);
 				
-															}
-									}
+															
+									
 								}
+/*
+map<string,q_user*>::iterator it;
+for (it=all_users.begin(); it!=all_users.end(); ++it){
+	cout<<it->first<<endl;
+    it->second->real_user->getFeed();
+}*/
 
-for (int i = 0; i < members; ++i)
-{
-//	(*all_users.commonsense(i))->getFeed();
-}
-
-		QApplication app(argc, argv);  
+ 
 
 
-	q_user* temp = new q_user;
+//	q_user* temp = new q_user;
 	user_win* window = new user_win;
-	window->reinitialize(temp);
+	window->reinitialize((all_users.begin())->second);
 
 	one_more_class final(window);
 
