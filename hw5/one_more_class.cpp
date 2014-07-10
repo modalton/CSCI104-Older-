@@ -19,6 +19,7 @@ one_more_class::one_more_class(user_win* prev): QWidget(){
 		final->addWidget(prev);
 
 		setLayout(final);
+
 						}
 
 one_more_class::~one_more_class(){}

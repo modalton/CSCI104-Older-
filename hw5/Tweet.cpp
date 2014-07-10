@@ -9,17 +9,21 @@
  	user->addTweet(this);
  	_poster->pushTweet(this);
 
+
  }
 
  
 
 DateTime const & Tweet::time() const{return _time;}
 
-std::string const & Tweet::text() const{ return _text;}
+std::string const & Tweet::text() const{ 
+	return _text;}
 
-//void Tweet::PushTweet(){
-	
-//}
+std::string Tweet::FullTweet(){
+	std::string temp;
+	temp = _poster->name() + " " + _time.DateTime_string() + " " + _text ;
+	return temp;
+}
 
 
 std::ostream& operator<<(std::ostream& os, const Tweet& t){

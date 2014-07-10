@@ -74,7 +74,7 @@ class Tweet
   /* Create any other public or private helper functions you deem 
      necessary */
 
- // void PushTweet();
+  std::string FullTweet();
 
 
  private:

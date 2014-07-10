@@ -87,7 +87,7 @@ class User {
 
  void getFeed();
 
- 
+ AList<Tweet*> feed; //move back to priv
 
      bool operator==(const User& other)const;
 
@@ -95,7 +95,7 @@ class User {
    std::string username;
    Set<User*> user_followers;
    Set<User*> user_following;
-   AList<Tweet*> feed;
+   
    AList<Tweet*> user_tweets;//MOVE
    
 

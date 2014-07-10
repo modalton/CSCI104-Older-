@@ -50,6 +50,7 @@ void user_win::change_user(q_user* new_q){
 void user_win::reinitialize(q_user* maker){
 
 	main_user = maker;
+	main_user->reset_feed();
 
 	//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");

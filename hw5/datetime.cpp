@@ -18,16 +18,28 @@
 	yr=year;
  	mn= month;
  	d=day;
+
+
 	  }
 
   std::string DateTime::DateTime_string(){
-    string Result;          // string which will contain the result
+    std::ostringstream convert;
+    std::string Result;          // string which will contain the result
 
-    ostringstream convert;   // stream used for the conversion
+    convert << yr << "-" << mn << "-" << d << " "<< h<< ":" << m << ":" <<s;     
+    Result = convert.str();
+  /*  convert << mn;     
+    Result += convert.str();
+    convert << d;     
+    Result += convert.str();
+    convert << h;     
+    Result += convert.str();
+    convert << m;     
+    Result += convert.str();
+    convert << s;     
+    Result += convert.str(); */
 
-    convert << Number;      // insert the textual representation of 'Number' in the characters in the stream
-
-    Result = convert.str(); // set 'Result' to the contents of the stream
+    return Result;
   }
 
 
