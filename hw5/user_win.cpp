@@ -55,16 +55,9 @@ void user_win::reinitialize(q_user* maker){
 		
 		//TEXT BOX
 		tweet_text = new QPlainTextEdit;
-
-		//FEED
-		//feed = new feed_widget;
-
-
 	
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
 	
-	
-
 
 		QVBoxLayout *layout = new QVBoxLayout;
 		layout->addWidget(main_user->feed->final_widget); 

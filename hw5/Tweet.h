@@ -5,6 +5,7 @@
 #include "datetime.h"
 #include "User.h"
 #include "AList.h"
+#include "q_user.h"
 
 /* Forward declaration */
 class User;
@@ -23,7 +24,11 @@ class Tweet
   /**
    * Constructor 
    */
+  
+
   Tweet(User* user, DateTime& time, std::string& text);
+
+  
 
   /**
    * Gets the timestamp of this tweet
@@ -69,7 +74,7 @@ class Tweet
   /* Create any other public or private helper functions you deem 
      necessary */
 
-  void PushTweet();
+ // void PushTweet();
 
 
  private:

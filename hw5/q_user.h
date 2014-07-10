@@ -6,13 +6,12 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QString>
-#include <vector>
 #include "User.h"
 #include "feed_widget.h"
 
 
 
-class q_user : public QObject , public User // you can also try QMainWindow
+class q_user : public QObject  // you can also try QMainWindow
 {
 	Q_OBJECT
 
@@ -31,7 +30,7 @@ class q_user : public QObject , public User // you can also try QMainWindow
 
 
 	private:
-		
+		User* real_user;
 
 	
 

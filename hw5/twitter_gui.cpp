@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
 			if((*all_users.commonsense(i))->name() == tweeter){
 				DateTime* temp_date = new DateTime(h,mn,s,y,m,d);
 				Tweet* made_tweet = new Tweet(*all_users.commonsense(i), *temp_date, text);
-				made_tweet->PushTweet();
+				
 															}
 									}
 								}
