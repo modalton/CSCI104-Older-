@@ -15,24 +15,24 @@ class user_win : public QWidget // you can also try QMainWindow
 
 	public:
 		user_win(q_user* the_user);
+		user_win();
 		~user_win();
+		void change_user(q_user* new_q);
+		void reinitialize(q_user* maker);
 
 	protected:
-		void closeEvent(QCloseEvent *event);
+	
+		
 
 	private slots:
 		void tweet_Click();
-		void follow_Click();
+		
 
 	private:
 		q_user* main_user;
 
 		QPushButton * post_tweet;
 		QPushButton * switch_feeds;
-		QPushButton * follow_button;
-
-		QComboBox * user_select;
-		QComboBox * follow_select;
 
 		QPlainTextEdit * tweet_text;
 		

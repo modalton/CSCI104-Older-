@@ -87,6 +87,8 @@ class User {
 
  void getFeed();
 
+ 
+
      bool operator==(const User& other)const;
 
  private:

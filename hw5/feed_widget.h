@@ -17,7 +17,7 @@ class feed_widget : public QListWidget // you can also try QMainWindow
 	public:
 	//feed_widget(test_user* test);
 	feed_widget();
-	void append_feed(int pos, std::string input);
+	void append_feed(std::string input);
 
 	QListWidget* final_widget;
 
@@ -29,7 +29,8 @@ class feed_widget : public QListWidget // you can also try QMainWindow
 
 	private:
 	QVBoxLayout * omg_qt_rules;
-	gui_tweet* setup; //change to dyamic in .cpp
+	gui_tweet* setup; 
+	int pos;//change to dyamic in .cpp
 
 
 };

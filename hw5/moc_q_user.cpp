@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'q_user.h'
 **
-** Created: Sun Jul 6 14:47:14 2014
+** Created: Wed Jul 9 17:22:40 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,14 +31,15 @@ static const uint qt_meta_data_q_user[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-       8,    7,    7,    7, 0x0a,
-      20,    7,    7,    7, 0x0a,
+      13,    8,    7,    7, 0x0a,
+      36,    7,    7,    7, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_q_user[] = {
-    "q_user\0\0new_tweet()\0following_new()\0"
+    "q_user\0\0text\0new_tweet(std::string)\0"
+    "following_new()\0"
 };
 
 void q_user::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -47,12 +48,11 @@ void q_user::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_ASSERT(staticMetaObject.cast(_o));
         q_user *_t = static_cast<q_user *>(_o);
         switch (_id) {
-        case 0: _t->new_tweet(); break;
+        case 0: _t->new_tweet((*reinterpret_cast< std::string(*)>(_a[1]))); break;
         case 1: _t->following_new(); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData q_user::staticMetaObjectExtraData = {
@@ -78,6 +78,8 @@ void *q_user::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_q_user))
         return static_cast<void*>(const_cast< q_user*>(this));
+    if (!strcmp(_clname, "User"))
+        return static_cast< User*>(const_cast< q_user*>(this));
     return QObject::qt_metacast(_clname);
 }
 

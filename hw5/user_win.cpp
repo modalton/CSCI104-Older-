@@ -8,6 +8,8 @@
 
 using namespace std;
 
+user_win::user_win(){}
+
 user_win::user_win(q_user* the_user) : QWidget()
 {
 		main_user = the_user;
@@ -15,30 +17,22 @@ user_win::user_win(q_user* the_user) : QWidget()
 		//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");
 		switch_feeds = new QPushButton("Switch Feeds");
-		follow_button = new QPushButton("Follow");
+		
 		//TEXT BOX
 		tweet_text = new QPlainTextEdit;
-		//COMBO BOX
-		user_select = new QComboBox();
-		follow_select= new QComboBox();
+
 		//FEED
-		feed = new feed_widget;
+		//feed = new feed_widget;
 
 
 	
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
-		connect(follow_button, SIGNAL(clicked()), this , SLOT(follow_Click()));
+	
 	
 
-		QHBoxLayout *topbar = new QHBoxLayout;
-		topbar->addWidget(user_select);
-		topbar->addWidget(follow_select);
-		topbar->addWidget(follow_button);
 
 		QVBoxLayout *layout = new QVBoxLayout;
-		layout->addLayout(topbar);
-		layout->addWidget(feed->final_widget); 
-		std::cout << feed->final_widget;
+		layout->addWidget(main_user->feed->final_widget); 
 		layout->addWidget(switch_feeds);
 		layout->addWidget(tweet_text);
 		layout->addWidget(post_tweet);
@@ -47,31 +41,51 @@ user_win::user_win(q_user* the_user) : QWidget()
 	// connect clicked signal of each button to the right slot
 }
 
+void user_win::change_user(q_user* new_q){
+	main_user = new_q;
+
+
+}
+
+void user_win::reinitialize(q_user* maker){
+	main_user = maker;
+	//BUTTONS
+		post_tweet = new QPushButton("Post Tweet");
+		switch_feeds = new QPushButton("Switch Feeds");
+		
+		//TEXT BOX
+		tweet_text = new QPlainTextEdit;
+
+		//FEED
+		//feed = new feed_widget;
+
+
+	
+		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
+	
+	
+
+
+		QVBoxLayout *layout = new QVBoxLayout;
+		layout->addWidget(main_user->feed->final_widget); 
+		layout->addWidget(switch_feeds);
+		layout->addWidget(tweet_text);
+		layout->addWidget(post_tweet);
+		setLayout(layout);
+
+}
+
 user_win::~user_win()
 {
 	//delete ??;
 }
 
-void user_win::closeEvent(QCloseEvent *event)
-{
-	if (true /* is it ok to close the window ? */)
-	{
-		// save data
-		event->accept();
-	}
-	else // otherwise
-	{
-		event->ignore();
-	}
-}
+
+
 
 void user_win::tweet_Click()
 {
-	main_user->new_tweet();
-	feed->append_feed(0, (tweet_text->toPlainText()).toStdString());
+	main_user->new_tweet((tweet_text->toPlainText()).toStdString());
+	//feed->append_feed( (tweet_text->toPlainText()).toStdString());
 }
 
-void user_win::follow_Click()
-{
-	main_user->following_new();
-}
