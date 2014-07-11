@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'q_user.h'
 **
-** Created: Thu Jul 10 15:04:43 2014
+** Created: Fri Jul 11 12:41:23 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,15 +31,16 @@ static const uint qt_meta_data_q_user[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      13,    8,    7,    7, 0x0a,
-      36,    7,    7,    7, 0x0a,
-      52,    7,    7,    7, 0x0a,
+      25,    8,    7,    7, 0x0a,
+      79,    7,    7,    7, 0x0a,
+      95,    7,    7,    7, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_q_user[] = {
-    "q_user\0\0text\0new_tweet(std::string)\0"
+    "q_user\0\0text,master_list\0"
+    "new_tweet(std::string,std::map<std::string,q_user*>&)\0"
     "following_new()\0reset_feed()\0"
 };
 
@@ -49,7 +50,7 @@ void q_user::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_ASSERT(staticMetaObject.cast(_o));
         q_user *_t = static_cast<q_user *>(_o);
         switch (_id) {
-        case 0: _t->new_tweet((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 0: _t->new_tweet((*reinterpret_cast< std::string(*)>(_a[1])),(*reinterpret_cast< std::map<std::string,q_user*>(*)>(_a[2]))); break;
         case 1: _t->following_new(); break;
         case 2: _t->reset_feed(); break;
         default: ;

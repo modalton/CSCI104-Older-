@@ -6,7 +6,7 @@
 #include <iostream>
 
 
-using namespace std;
+
 
 user_win::user_win(){}
 
@@ -22,17 +22,21 @@ user_win::user_win(q_user* the_user) : QWidget()
 		tweet_text = new QPlainTextEdit;
 
 		//FEED
-		//feed = new feed_widget;
+		//feed = main_user->feed->final_widget;
 
 
-	
+		all_feeds = new QStackedWidget;
+		all_feeds->addWidget(main_user->mention_feed->final_widget);
+		all_feeds->addWidget(main_user->feed->final_widget);
+		
+
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
 	
 	
 
 
-		QVBoxLayout *layout = new QVBoxLayout;
-		layout->addWidget(main_user->feed->final_widget); 
+		layout = new QVBoxLayout;
+		layout->addWidget(all_feeds); 
 		layout->addWidget(switch_feeds);
 		layout->addWidget(tweet_text);
 		layout->addWidget(post_tweet);
@@ -42,15 +46,30 @@ user_win::user_win(q_user* the_user) : QWidget()
 }
 
 void user_win::change_user(q_user* new_q){
-	main_user = new_q;
 
+	main_user = new_q;
+	main_user->reset_feed();
+/*	feed = new_q->feed->final_widget;
+	layout = new QVBoxLayout;
+	layout->addWidget(feed);
+	std::cout<<post_tweet<< "\n";
+	setLayout(layout);
+
+
+	QListWidget* temp = new_q->feed->final_widget;
+	temp->show();
+	
+	//	setLayout(layout);*/
 
 }
 
-void user_win::reinitialize(q_user* maker){
+void user_win::reinitialize(q_user* maker, std::map<std::string, q_user*> &master_list){
 
+	
 	main_user = maker;
 	main_user->reset_feed();
+
+	this->master_list = &master_list;
 
 	//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");
@@ -58,12 +77,18 @@ void user_win::reinitialize(q_user* maker){
 		
 		//TEXT BOX
 		tweet_text = new QPlainTextEdit;
+
+		all_feeds = new QStackedWidget;
+		all_feeds->addWidget(main_user->feed->final_widget);
+		all_feeds->addWidget(main_user->mention_feed->final_widget);
+		
+
 	
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
 
 
 		QVBoxLayout *layout = new QVBoxLayout;
-		layout->addWidget(main_user->feed->final_widget); 
+		layout->addWidget(all_feeds); 
 		layout->addWidget(switch_feeds);
 		layout->addWidget(tweet_text);
 		layout->addWidget(post_tweet);
@@ -82,7 +107,9 @@ user_win::~user_win()
 
 void user_win::tweet_Click()
 {
-	main_user->new_tweet((tweet_text->toPlainText()).toStdString());
+	std::cout<<"here\n";
+	main_user->new_tweet((tweet_text->toPlainText()).toStdString(), *master_list);
+
 	//feed->append_feed( (tweet_text->toPlainText()).toStdString());
 }
 

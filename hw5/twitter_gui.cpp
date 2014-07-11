@@ -13,6 +13,7 @@
 #include "Tweet.cpp"
 #include <cstddef>
 #include "one_more_class.cpp"
+#include "q_user.h"
 #include <map>
 
 
@@ -86,7 +87,7 @@ int main(int argc, char *argv[]) {
 		string tweeter = person;
 
 		DateTime* temp_date = new DateTime(h,mn,s,y,m,d);
-		Tweet* made_tweet = new Tweet((*all_users.find(tweeter)).second->real_user, *temp_date, text);
+		Tweet* made_tweet = new Tweet((*all_users.find(tweeter)).second->real_user, *temp_date, text, all_users);
 				
 															
 									
@@ -100,14 +101,15 @@ for (it=all_users.begin(); it!=all_users.end(); ++it){
 
  
 
+	
 
-//	q_user* temp = new q_user;
-	user_win* window = new user_win;
-	window->reinitialize((all_users.begin())->second);
+	one_more_class final(all_users);
 
-	one_more_class final(window);
+
 
 	final.show();
+
+	  
 
 	return app.exec();
 }

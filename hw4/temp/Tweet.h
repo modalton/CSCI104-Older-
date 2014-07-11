@@ -1,17 +1,13 @@
 #ifndef TWEET_H
 #define TWEET_H
 #include <iostream>
-#include <map>
 #include <string>
 #include "datetime.h"
 #include "User.h"
 #include "AList.h"
-#include "q_user.h"
-
 
 /* Forward declaration */
 class User;
-class q_user;
 
 /**
  * Models a tweet and provide comparison and output operators
@@ -27,11 +23,7 @@ class Tweet
   /**
    * Constructor 
    */
-  
-
-  Tweet(User* user, DateTime& time, std::string& text, std::map<std::string, q_user*> &master_list);
-
-  
+  Tweet(User* user, DateTime& time, std::string& text);
 
   /**
    * Gets the timestamp of this tweet
@@ -77,7 +69,7 @@ class Tweet
   /* Create any other public or private helper functions you deem 
      necessary */
 
-  std::string FullTweet();
+  void PushTweet();
 
 
  private:

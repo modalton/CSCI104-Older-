@@ -6,8 +6,11 @@
 #include <QMessageBox>
 #include <QPlainTextEdit>
 #include <QComboBox>
+#include <map>
 #include "q_user.h"
 #include "feed_widget.h"
+#include <QStackedWidget>
+
 
 class user_win : public QWidget // you can also try QMainWindow
 {
@@ -18,7 +21,8 @@ class user_win : public QWidget // you can also try QMainWindow
 		user_win();
 		~user_win();
 		void change_user(q_user* new_q);
-		void reinitialize(q_user* maker);
+		void reinitialize(q_user* maker, std::map<std::string, q_user*> &master_list);
+		q_user* main_user;
 
 	protected:
 	
@@ -29,14 +33,18 @@ class user_win : public QWidget // you can also try QMainWindow
 		
 
 	private:
-		q_user* main_user;
+
+		QVBoxLayout *layout;
 
 		QPushButton * post_tweet;
 		QPushButton * switch_feeds;
 
 		QPlainTextEdit * tweet_text;
-		
-		feed_widget* feed;
+
+		QStackedWidget* all_feeds;
+
+		std::map<std::string, q_user*>* master_list;
+
 };
 
 #endif

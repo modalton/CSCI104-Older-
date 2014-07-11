@@ -20,11 +20,14 @@ class q_user : public QObject  // you can also try QMainWindow
 		q_user();
 		~q_user();
 		feed_widget* feed;
+		feed_widget* mention_feed;
 		User* real_user;
+		void app_feed(std::string text);
 	public slots:
-		void new_tweet(std::string text);
+		void new_tweet(std::string text, std::map<std::string, q_user*> &master_list);
 		void following_new();
 		void reset_feed();
+
 
 
 	private slots:
