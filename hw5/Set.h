@@ -11,6 +11,8 @@ class Set : public std::set<T>{
     Set (const Set<T> & other); // copy constructor, making a deep copy
     ~Set ();                    // destructor
 
+      void add (const T & item);
+
   //  Set<T> setIntersection (const Set<T> & other) const;
       /* Returns the intersection of the current set with other.
          That is, returns the set of all items that are both in this
@@ -23,7 +25,7 @@ class Set : public std::set<T>{
          The resulting set should not contain duplicates. */
 
 /*
-    void add (const T & item); 
+ 
       
 
     void remove (const T & item);
@@ -57,6 +59,7 @@ class Set : public std::set<T>{
     */
 
     // other private variables you think you need.
+
 };
 #include "SetImpl.h"
 

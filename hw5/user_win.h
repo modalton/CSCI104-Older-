@@ -30,6 +30,7 @@ class user_win : public QWidget // you can also try QMainWindow
 
 	private slots:
 		void tweet_Click();
+		void chng_feed();
 		
 
 	private:
@@ -37,11 +38,14 @@ class user_win : public QWidget // you can also try QMainWindow
 		QVBoxLayout *layout;
 
 		QPushButton * post_tweet;
+
 		QPushButton * switch_feeds;
+		bool flip;
 
 		QPlainTextEdit * tweet_text;
 
 		QStackedWidget* all_feeds;
+
 
 		std::map<std::string, q_user*>* master_list;
 

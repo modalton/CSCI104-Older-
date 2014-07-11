@@ -29,7 +29,7 @@ class Tweet
    */
   
 
-  Tweet(User* user, DateTime& time, std::string& text, std::map<std::string, q_user*> &master_list);
+  Tweet(User* user, DateTime& time, std::string& text);
 
   
 

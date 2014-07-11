@@ -94,3 +94,8 @@ T* Set<T>::commonsense(int pos){ return &internalStorage.get(pos);}
 template<class T>
 int Set<T>::fnum(){return last_num;}
 */
+
+template<class T>
+    void Set<T>::add (const T & item){
+    	std::set<T>::insert(item);
+    }

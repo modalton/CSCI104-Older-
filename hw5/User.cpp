@@ -26,6 +26,16 @@ void User::addFollower(User* u){ this->user_followers.add(u); }
 
 void User::addTweet(Tweet* t){user_tweets.insert(0,t); }
 
+void User::add_mentions_tweet(Tweet* t){
+	int f_size = mention_feed.size();
+	if(f_size==0){mention_feed.insert(0,t);}
+	for (int i = 0; i < f_size; ++i)
+		{
+		if(mention_feed.get(i) < t){mention_feed.insert(i,t); break;}
+		if(i == f_size-1){mention_feed.insert(f_size,t);}
+	}
+}
+
 void User::updateFeed(Tweet* t){
 	int f_size = feed.size();
 	if(f_size==0){feed.insert(0,t);}
@@ -39,8 +49,10 @@ void User::updateFeed(Tweet* t){
 
 void User::pushTweet(Tweet* t){
 	updateFeed(t);
-	for (int i = 0; i < user_followers.size(); ++i)
-	{	(*user_followers.commonsense(i))->updateFeed(t);
+	std::set<User*>::iterator myIterator;
+	for(myIterator = user_followers.begin(); myIterator != user_followers.end(); myIterator++)
+		{	User* temp = *myIterator;
+			temp->updateFeed(t);
 	}
 }
 

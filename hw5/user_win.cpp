@@ -10,6 +10,11 @@
 
 user_win::user_win(){}
 
+user_win::~user_win()
+{
+	//delete ??;
+}
+
 user_win::user_win(q_user* the_user) : QWidget()
 {
 		main_user = the_user;
@@ -17,6 +22,8 @@ user_win::user_win(q_user* the_user) : QWidget()
 		//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");
 		switch_feeds = new QPushButton("Switch Feeds");
+
+		flip = true;
 		
 		//TEXT BOX
 		tweet_text = new QPlainTextEdit;
@@ -31,6 +38,7 @@ user_win::user_win(q_user* the_user) : QWidget()
 		
 
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
+		connect(switch_feeds, SIGNAL(clicked()), this , SLOT(chng_feed()));
 	
 	
 
@@ -74,6 +82,8 @@ void user_win::reinitialize(q_user* maker, std::map<std::string, q_user*> &maste
 	//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");
 		switch_feeds = new QPushButton("Switch Feeds");
+
+		flip = true;
 		
 		//TEXT BOX
 		tweet_text = new QPlainTextEdit;
@@ -85,6 +95,7 @@ void user_win::reinitialize(q_user* maker, std::map<std::string, q_user*> &maste
 
 	
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
+		connect(switch_feeds, SIGNAL(clicked()), this , SLOT(chng_feed()));
 
 
 		QVBoxLayout *layout = new QVBoxLayout;
@@ -97,17 +108,18 @@ void user_win::reinitialize(q_user* maker, std::map<std::string, q_user*> &maste
 
 }
 
-user_win::~user_win()
-{
-	//delete ??;
+void user_win::chng_feed(){
+	if(flip){all_feeds->setCurrentIndex(1); flip = false;}
+	else{all_feeds->setCurrentIndex(0); flip = true;}
 }
+
+
 
 
 
 
 void user_win::tweet_Click()
 {
-	std::cout<<"here\n";
 	main_user->new_tweet((tweet_text->toPlainText()).toStdString(), *master_list);
 
 	//feed->append_feed( (tweet_text->toPlainText()).toStdString());

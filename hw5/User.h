@@ -81,13 +81,16 @@ class User {
    *         and those they follow in timestamp order
 
    */
+ void add_mentions_tweet(Tweet *t);
+
  void updateFeed(Tweet* t);
 
  void pushTweet(Tweet* t);
 
  void getFeed();
 
- AList<Tweet*> feed; //move back to priv
+ AList<Tweet*> feed;
+ AList<Tweet*> mention_feed; //move back to priv
 
      bool operator==(const User& other)const;
 
@@ -97,7 +100,7 @@ class User {
    Set<User*> user_following;
    
    AList<Tweet*> user_tweets;
-   AList<Tweet*> mention_feed;
+   
    
 
 
