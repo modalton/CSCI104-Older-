@@ -6,6 +6,7 @@
 #include <sstream>
 
 
+
 q_user::q_user(std::string name){
 	real_user = new User(name);
 	feed = new feed_widget;
@@ -23,6 +24,7 @@ q_user::q_user(){
 
 q_user::~q_user(){}
 
+//Next two functions are exactly as they sound
 void q_user::app_feed(std::string text){
 	feed->append_feed(text);
 }
@@ -34,13 +36,17 @@ void q_user::app_mentions_feed(std::string text){
 void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_list){
 
 
-	//make tweet for underlying user
+//GETS CURRENT TIME AND TURNS THIS AND TEXT INTO A DATE TIME AND TWEET
+//AS WELL AS PERFORMING SCREENING FOR A @TWEET
+//UPDATES THINGS ACCORDINGLY
+
    time_t now = time(0);
    tm *ltm = localtime(&now);
 
    DateTime* temp_date = new DateTime(1+ltm->tm_hour,1+ltm->tm_min,1+ltm->tm_sec,1900 + ltm->tm_year,1 + ltm->tm_mon, ltm->tm_mday);
    Tweet* made_tweet = new Tweet(real_user, *temp_date, text);
 
+//check for @ mention tweets
    if(text.find('@')==0){
 		std::istringstream split(text);
 		std::string name;
@@ -50,13 +56,16 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
 		std::string real_name = name.substr(1);
 		if(master_list.find(real_name)!= master_list.end())
 			{(master_list.find(real_name))->second->real_user->add_mentions_tweet(made_tweet);
-			 (master_list.find(real_name))->second->app_mentions_feed(made_tweet->FullTweet()); return;
+			 (master_list.find(real_name))->second->app_mentions_feed(made_tweet->FullTweet());
+			 (master_list.find(real_name))->second->app_feed(made_tweet->FullTweet());
+			  feed->append_feed(made_tweet->FullTweet());return;
 			}
+		
 
 	}
 
 	
- 	
+ 	//find whos makeing the tweet and call functions appropriatly
  	std::set<User*>::iterator it;
  	for(it = real_user->user_followers.begin(); it != real_user->user_followers.end();it++ ){
  		User* p = *it;
@@ -74,13 +83,14 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
 
 }
 
-void q_user::reset_feed(){
-	for(int i =0; i < real_user->feed.size(); i++){
-		feed->append_feed(real_user->feed.get(i)->FullTweet());
+void q_user::reset_feed(std::map<std::string, q_user*> &master_list){
+	for(int i =0; i < real_user->tweets().size(); i++){
+		feed->append_feed(real_user->tweets().get(i)->FullTweet());
 	}
 
-	for(int i =0; i < real_user->mention_feed.size(); i++){
-		feed->append_feed(real_user->mention_feed.get(i)->FullTweet());
+
+	for(int i =0; i < real_user->mention_tweets().size(); i++){
+		feed->append_feed(real_user->mention_tweets().get(i)->FullTweet());
 	}
 
 

@@ -8,8 +8,13 @@ User::User(std::string name){
 }
 
 User::User(){
-	username="nobody"; //EDIT OUT
+	
 }
+
+ User::~User(){
+ 
+
+ }
 
 std::string  User::name(){return username;}
 
@@ -58,7 +63,10 @@ void User::pushTweet(Tweet* t){
 	}
 }
 
-AList<Tweet*> User::tweets(){return user_tweets; //WHY DID I NEED COPY CONSTRUCTOR/ = op FOR THIS 
+AList<Tweet*> User::tweets(){return feed; //WHY DID I NEED COPY CONSTRUCTOR/ = op FOR THIS 
+}
+
+AList<Tweet*> User::mention_tweets(){return mention_feed; //WHY DID I NEED COPY CONSTRUCTOR/ = op FOR THIS 
 }
 
 void User::getFeed(){

@@ -16,7 +16,9 @@ class feed_widget : public QListWidget // you can also try QMainWindow
 	Q_OBJECT
 
 	public:
-	//feed_widget(test_user* test);
+	//THIS WIDGET CONTROLS MANIPULATING INPUT TEXT INTO 
+	//QLISTWDIGET OF LABELS SO PICTURES CAN BE ADDED LATER
+
 	feed_widget();
 	void append_feed(std::string input);
 
@@ -31,7 +33,6 @@ class feed_widget : public QListWidget // you can also try QMainWindow
 	private:
 	QVBoxLayout * omg_qt_rules;
 	std::vector<gui_tweet*> setup; 
-	int pos;//change to dyamic in .cpp
 
 
 };

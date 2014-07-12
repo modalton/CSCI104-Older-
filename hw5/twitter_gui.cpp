@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 	string line;
 	int members;
 	map<string, q_user*> all_users;
-	ifstream file("twitter.dat");   //CHANGE TO ARGV/C
+	ifstream file(argv[1]);   
 	getline(file,line);
 	stringstream ss(line); 
 	if((ss>>members).fail()){
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 
 	//we reopen the file to go through again and add the friends
 	//did this bc we don't want to instantiate anyone who isnt a user
-	ifstream file1("twitter.dat");
+	ifstream file1(argv[1]);
 	getline(file1,line);
 	for(int i=0; i<members; i++){
 
@@ -93,12 +93,7 @@ int main(int argc, char *argv[]) {
 															
 									
 								}
-/*
-map<string,q_user*>::iterator it;
-for (it=all_users.begin(); it!=all_users.end(); ++it){
-	cout<<it->first<<endl;
-    it->second->real_user->getFeed();
-}*/
+
 
  
 

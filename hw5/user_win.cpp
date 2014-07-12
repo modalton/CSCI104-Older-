@@ -12,7 +12,7 @@ user_win::user_win(){}
 
 user_win::~user_win()
 {
-	//delete ??;
+	
 }
 
 user_win::user_win(q_user* the_user) : QWidget()
@@ -28,15 +28,13 @@ user_win::user_win(q_user* the_user) : QWidget()
 		//TEXT BOX
 		tweet_text = new QPlainTextEdit;
 
-		//FEED
-		//feed = main_user->feed->final_widget;
 
 
 		all_feeds = new QStackedWidget;
 		all_feeds->addWidget(main_user->mention_feed->final_widget);
 		all_feeds->addWidget(main_user->feed->final_widget);
 		
-
+		// connect clicked signal of each button to the right slot
 		connect(post_tweet, SIGNAL(clicked()), this , SLOT(tweet_Click()));
 		connect(switch_feeds, SIGNAL(clicked()), this , SLOT(chng_feed()));
 	
@@ -50,36 +48,20 @@ user_win::user_win(q_user* the_user) : QWidget()
 		layout->addWidget(post_tweet);
 		setLayout(layout);
 
-	// connect clicked signal of each button to the right slot
-}
-
-void user_win::change_user(q_user* new_q){
-
-	main_user = new_q;
-	main_user->reset_feed();
-/*	feed = new_q->feed->final_widget;
-	layout = new QVBoxLayout;
-	layout->addWidget(feed);
-	std::cout<<post_tweet<< "\n";
-	setLayout(layout);
-
-
-	QListWidget* temp = new_q->feed->final_widget;
-	temp->show();
-	
-	//	setLayout(layout);*/
 
 }
+
+
 
 void user_win::reinitialize(q_user* maker, std::map<std::string, q_user*> &master_list){
 
 	
 	main_user = maker;
-	main_user->reset_feed();
+	main_user->reset_feed(master_list);
 
 	this->master_list = &master_list;
 
-	//BUTTONS
+		//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");
 		post_tweet->setFixedWidth(200);
 		switch_feeds = new QPushButton("Switch Feeds");
@@ -124,6 +106,6 @@ void user_win::tweet_Click()
 {
 	main_user->new_tweet((tweet_text->toPlainText()).toStdString(), *master_list);
 
-	//feed->append_feed( (tweet_text->toPlainText()).toStdString());
+	
 }
 

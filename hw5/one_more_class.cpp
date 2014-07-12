@@ -43,7 +43,7 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 		top_bar = new QHBoxLayout;
 		top_bar->addWidget(user_select);
 		top_bar->addWidget(user_button);
-		top_bar->addSpacing(350);
+		top_bar->addSpacing(400);
 		top_bar->addWidget(follow_select);
 		top_bar->addWidget(follow_button);
 

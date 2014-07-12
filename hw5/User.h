@@ -21,7 +21,7 @@ class User {
   /**
    * Destructor
    */
- // ~User();
+  ~User();
 
   /**
    * Gets the name of the user 
@@ -50,6 +50,8 @@ class User {
    * @return List of tweets this user has posted
    */
   AList<Tweet*> tweets();
+
+  AList<Tweet*> mention_tweets();
 
   /**
    * Adds a follower to this users set of followers
@@ -91,8 +93,7 @@ class User {
 
  std::string getString();
 
- AList<Tweet*> feed;
- AList<Tweet*> mention_feed;
+
    Set<User*> user_followers;
    Set<User*> user_following; //move back to priv
 
@@ -100,6 +101,8 @@ class User {
 
  private:
    std::string username;
+    AList<Tweet*> feed;
+    AList<Tweet*> mention_feed;
  
 
    

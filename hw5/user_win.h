@@ -20,7 +20,7 @@ class user_win : public QWidget // you can also try QMainWindow
 		user_win(q_user* the_user);
 		user_win();
 		~user_win();
-		void change_user(q_user* new_q);
+//change who the main user (q_user* is for this window)
 		void reinitialize(q_user* maker, std::map<std::string, q_user*> &master_list);
 		q_user* main_user;
 
@@ -34,16 +34,17 @@ class user_win : public QWidget // you can also try QMainWindow
 		
 
 	private:
-
+//layout is the final layout for this child widget
 		QVBoxLayout *layout;
 
+//post/switch feed buttons for this child
+// flip bool is so the widget knows which to switch too
 		QPushButton * post_tweet;
-
 		QPushButton * switch_feeds;
 		bool flip;
-
+//text box
 		QPlainTextEdit * tweet_text;
-
+//has both feed ontop of one another
 		QStackedWidget* all_feeds;
 
 

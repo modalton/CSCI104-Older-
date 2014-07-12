@@ -14,7 +14,7 @@ int AList<T>::size() const{
 }
 
 
-template <class T> //why doesnt this work!!!
+template <class T> 
 AList<T>::AList(const AList<T>& other){
    _size = other.size();
   capacity = other.size();
