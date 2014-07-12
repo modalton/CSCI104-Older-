@@ -4,6 +4,8 @@
 #include "user_win.h"
 #include <map>
 #include <QStackedWidget>
+#include <QLineEdit>
+#include <fstream>
 
 #ifndef ONE_MORE_CLASS_H
 #define ONE_MORE_CLASS_H
@@ -17,6 +19,7 @@ public:
 
 public slots:
 	void add_follower();
+	void make_feed();
 
 
 private:
@@ -24,13 +27,16 @@ private:
 
 	QStackedWidget* stackedWidget;
 
+	QLineEdit* input;
 
 	QComboBox* user_select;
-
 	QComboBox* follow_select;
+
 	QPushButton* follow_button;
+	QPushButton* feed_button;
 
 	QHBoxLayout* top_bar;
+	QHBoxLayout* bottom_bar;
 	QVBoxLayout* final;
 
 

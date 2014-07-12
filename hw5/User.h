@@ -89,6 +89,8 @@ class User {
 
  void getFeed();
 
+ std::string getString();
+
  AList<Tweet*> feed;
  AList<Tweet*> mention_feed;
    Set<User*> user_followers;

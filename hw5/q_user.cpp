@@ -55,9 +55,7 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
 
 	}
 
-	std::cout<< real_user->user_followers.size() << "\n";
- 	
- 	
+	
  	
  	std::set<User*>::iterator it;
  	for(it = real_user->user_followers.begin(); it != real_user->user_followers.end();it++ ){

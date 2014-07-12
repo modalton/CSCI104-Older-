@@ -7,6 +7,7 @@
 #include <QString>
 #include <QListWidget>
 #include <QVBoxLayout>
+#include <vector>
 #include "gui_tweet.h"
 
 
@@ -29,7 +30,7 @@ class feed_widget : public QListWidget // you can also try QMainWindow
 
 	private:
 	QVBoxLayout * omg_qt_rules;
-	gui_tweet* setup; 
+	std::vector<gui_tweet*> setup; 
 	int pos;//change to dyamic in .cpp
 
 

@@ -20,7 +20,9 @@ bool User::operator==(const User& other) const{
 
 Set<User*> User::followers(){return user_followers;}
 
-void User::addFollowing(User* u){ this->user_following.add(u);u->addFollower(this); }
+void User::addFollowing(User* u){ 
+	if(user_following.find(u)!= user_following.end()){ return;}
+	this->user_following.add(u);u->addFollower(this); }
 
 void User::addFollower(User* u){ this->user_followers.add(u); }
 
@@ -66,4 +68,13 @@ void User::getFeed(){
 	for(int i=0; i<feed.size(); i++){
 		output << *(feed.get(i));
 	}
+}
+
+std::string User::getString(){
+	std::string final ="\n\n" + username + " \n";
+		for(int i=0; i<feed.size(); i++){
+		final+= feed.get(i)->FullTweet();
+		final += "\n";
+	}
+	return final;
 }
