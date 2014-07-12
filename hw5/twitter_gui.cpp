@@ -69,7 +69,8 @@ int main(int argc, char *argv[]) {
 		string amigo;
 		while(getline(split,amigo, ' ')){
 					(*all_users.find(guywithfriends)).second->real_user->addFollowing((*all_users.find(amigo)).second->real_user);
-					}}
+					}
+				}
 
 	//parse through rest of the file (aka tweets)
 	//set up a sscanf with fail check to read each part into datetime/tweet constructor

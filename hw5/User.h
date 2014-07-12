@@ -90,14 +90,16 @@ class User {
  void getFeed();
 
  AList<Tweet*> feed;
- AList<Tweet*> mention_feed; //move back to priv
+ AList<Tweet*> mention_feed;
+   Set<User*> user_followers;
+   Set<User*> user_following; //move back to priv
 
      bool operator==(const User& other)const;
 
  private:
    std::string username;
-   Set<User*> user_followers;
-   Set<User*> user_following;
+ 
+
    
    AList<Tweet*> user_tweets;
    
