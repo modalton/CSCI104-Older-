@@ -20,6 +20,7 @@ public:
 public slots:
 	void add_follower();
 	void make_feed();
+	void change_user();
 
 
 private:
@@ -34,6 +35,7 @@ private:
 
 	QPushButton* follow_button;
 	QPushButton* feed_button;
+	QPushButton* user_button;
 
 	QHBoxLayout* top_bar;
 	QHBoxLayout* bottom_bar;

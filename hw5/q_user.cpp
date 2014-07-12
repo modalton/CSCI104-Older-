@@ -88,8 +88,7 @@ void q_user::reset_feed(){
 
 
 void q_user::following_new( q_user* two){
-	if(this == two){std::cout<<"Can't follow yourself. You're not that intresting\n";return;}
-	std::cout<< this->real_user->name() << " is following " << two->real_user->name() << "\n";
+	if(this == two){return;}
 	this->real_user->addFollowing(two->real_user);
 
 }

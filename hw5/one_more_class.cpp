@@ -11,10 +11,17 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 
 //combo boxes which will bee filled w users
 		user_select= new QComboBox;
+		user_select->setFixedWidth(80);
 		follow_select= new QComboBox;
-//buttons for following and feed selection
+		follow_select->setFixedWidth(80);
+//buttons for following,user swithc, and feed selection
 		follow_button = new QPushButton("Follow");
+		follow_button->setFixedWidth(70);
 		feed_button = new QPushButton("Get Feeds");
+		feed_button->setFixedWidth(80);
+		user_button = new QPushButton("Change User");
+		user_button->setFixedWidth(100);
+
 
 //Populate combo boxes with appropriate stuff
 		std::map<std::string,q_user*>::iterator it;
@@ -28,13 +35,15 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 		}
 
 //connect combo box to auto select and another two to call slots in this class
-		 connect(user_select, SIGNAL(activated(int)),stackedWidget, SLOT(setCurrentIndex(int)));
+		 connect(user_button, SIGNAL(clicked()),this, SLOT(change_user()));
 		 connect(follow_button, SIGNAL(clicked()),this, SLOT(add_follower()));
 		 connect(feed_button, SIGNAL(clicked()),this, SLOT(make_feed()));
 
 //format layouts of all widgets
 		top_bar = new QHBoxLayout;
 		top_bar->addWidget(user_select);
+		top_bar->addWidget(user_button);
+		top_bar->addSpacing(350);
 		top_bar->addWidget(follow_select);
 		top_bar->addWidget(follow_button);
 
@@ -47,6 +56,8 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 		final->addLayout(top_bar);
 		final->addWidget(stackedWidget);
 		final->addLayout(bottom_bar);
+		final->setSpacing(40);
+		setFixedWidth(750);
 		setLayout(final);
 
 						}
@@ -68,6 +79,10 @@ void one_more_class::add_follower(){
 
 
 	
+}
+
+void one_more_class::change_user(){
+	stackedWidget->setCurrentIndex(user_select->currentIndex());
 }
 
 void one_more_class::make_feed(){

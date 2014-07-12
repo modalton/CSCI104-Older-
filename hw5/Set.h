@@ -7,9 +7,9 @@
 template <class T>
 class Set : public std::set<T>{
   public: 
-    Set (): std::set<T>(){}                     // constructor for an empty set
-    Set (const Set<T> & other); // copy constructor, making a deep copy
-    ~Set ();                    // destructor
+  //  Set (): std::set<T>(){}                     // constructor for an empty set
+  //  Set (const Set<T> & other); // copy constructor, making a deep copy
+  //  ~Set ();                    // destructor
 
       void add (const T & item);
 

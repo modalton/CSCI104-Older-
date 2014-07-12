@@ -81,7 +81,9 @@ void user_win::reinitialize(q_user* maker, std::map<std::string, q_user*> &maste
 
 	//BUTTONS
 		post_tweet = new QPushButton("Post Tweet");
+		post_tweet->setFixedWidth(200);
 		switch_feeds = new QPushButton("Switch Feeds");
+		switch_feeds->setFixedWidth(200);
 
 		flip = true;
 		

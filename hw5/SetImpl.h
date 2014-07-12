@@ -3,13 +3,13 @@
 
 //template <class T>
 //Set<T>::Set(){}  //constructor
-
+/*
 template <class T>
 Set<T>::Set(const Set<T> & other){} //copy constructor
 
 template <class T>  //deconstructor
 Set<T>::~Set(){}
-/*
+
 template <class T>
 Set<T> Set<T>::setIntersection (const Set<T> & other) const{
 	Set<T> intersect;
