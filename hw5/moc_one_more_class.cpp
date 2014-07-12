@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'one_more_class.h'
 **
-** Created: Fri Jul 11 15:10:37 2014
+** Created: Fri Jul 11 16:50:58 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -37,7 +37,7 @@ static const uint qt_meta_data_one_more_class[] = {
 };
 
 static const char qt_meta_stringdata_one_more_class[] = {
-    "one_more_class\0\0change_user_box()\0"
+    "one_more_class\0\0add_follower()\0"
 };
 
 void one_more_class::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -46,7 +46,7 @@ void one_more_class::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         Q_ASSERT(staticMetaObject.cast(_o));
         one_more_class *_t = static_cast<one_more_class *>(_o);
         switch (_id) {
-        case 0: _t->change_user_box(); break;
+        case 0: _t->add_follower(); break;
         default: ;
         }
     }

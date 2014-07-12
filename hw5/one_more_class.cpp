@@ -9,7 +9,6 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 
 
 		user_select= new QComboBox;
-		user_button= new QPushButton("Go");
 
 		follow_select= new QComboBox;
 		follow_button = new QPushButton("Follow");
@@ -21,15 +20,16 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 			temp->reinitialize(it->second, example);
 			stackedWidget->addWidget(temp);
 			user_select->addItem(QString::fromStdString(it->first));
+			follow_select->addItem(QString::fromStdString(it->first));
     		//it->second->real_user->getFeed();
 		}
 
 		 connect(user_select, SIGNAL(activated(int)),stackedWidget, SLOT(setCurrentIndex(int)));
+		 connect(follow_button, SIGNAL(clicked()),this, SLOT(add_follower()));
 
 
 		top_bar = new QHBoxLayout;
 		top_bar->addWidget(user_select);
-		top_bar->addWidget(user_button);
 		top_bar->addWidget(follow_select);
 		top_bar->addWidget(follow_button);
 
@@ -43,12 +43,14 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 						}
 
 
-void one_more_class::change_user_box(){
-	std::string chng_to = (user_select->currentText()).toStdString();
-	std::cout << chng_to << "\n";
-	stackedWidget->setCurrentIndex(1);
-//	window->change_user((master_list->find(chng_to))->second);
+void one_more_class::add_follower(){
+	std::string p1 = user_select->currentText().toStdString();
+	std::string p2 = follow_select->currentText().toStdString();
 
+//	master_list.find(p1)->second->following_new(master_list.find(p2)->second);
+
+
+	
 }
 
 one_more_class::~one_more_class(){}

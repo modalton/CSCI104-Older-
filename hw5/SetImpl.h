@@ -1,8 +1,8 @@
 
 #include <stdexcept>
 
-template <class T>
-Set<T>::Set(){}  //constructor
+//template <class T>
+//Set<T>::Set(){}  //constructor
 
 template <class T>
 Set<T>::Set(const Set<T> & other){} //copy constructor

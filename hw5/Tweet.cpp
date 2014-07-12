@@ -6,25 +6,6 @@
  	_time= timer;
  	_text= text;
 
-
-
- //	std::map<std::string,q_user*>::iterator it;
-//		for (it=example.begin(); it!=example.end(); ++it){
-
-//		}
-
-//make a seqerate function and call it in upper func
-
-
-
-
-	/*	size_t test_pos= name.find_first_of("@");
-		if (test_pos==0)
-			{cout<< name <<" buthoole\n";} */
-
-			
-		
-
  	
 
  	user->addTweet(this);

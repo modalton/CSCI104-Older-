@@ -26,7 +26,7 @@ class q_user : public QObject  // you can also try QMainWindow
 		void app_mentions_feed(std::string text);
 	public slots:
 		void new_tweet(std::string text, std::map<std::string, q_user*> &master_list);
-		void following_new();
+		void following_new(q_user* two);
 		void reset_feed();
 
 

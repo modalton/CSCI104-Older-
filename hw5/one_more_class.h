@@ -16,7 +16,7 @@ public:
 	~one_more_class();
 
 public slots:
-	void change_user_box();
+	void add_follower();
 
 
 private:
@@ -26,7 +26,6 @@ private:
 
 
 	QComboBox* user_select;
-	QPushButton* user_button;
 
 	QComboBox* follow_select;
 	QPushButton* follow_button;

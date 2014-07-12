@@ -42,6 +42,7 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
    Tweet* made_tweet = new Tweet(real_user, *temp_date, text);
 
    if(text.find('@')==0){
+   		std::cout<<"here\n";
 		std::istringstream split(text);
 		std::string name;
 		getline(split,name, ' ');
@@ -52,8 +53,13 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
 			{(master_list.find(real_name))->second->real_user->add_mentions_tweet(made_tweet);
 			 (master_list.find(real_name))->second->app_mentions_feed(made_tweet->FullTweet()); return;
 			}
-
-
+ 	
+ 	Set<User*> followers = real_user->followers();
+ 	std::set<User*>::iterator it;
+ 	for(it = followers.begin(); it != followers.end();it++ ){
+ 		User* p = *it;
+ 		std::cout<< p->name()<< " eeh\n";
+ 	}
 
 	}
    
@@ -76,6 +82,9 @@ void q_user::reset_feed(){
 }
 
 
-void q_user::following_new(){
+void q_user::following_new( q_user* two){
+	if(this == two){std::cout<<"Can't follow yourself. You're not that intresting\n";return;}
+	std::cout<< this->real_user->name() << " is following " << two->real_user->name() << "\n";
+	this->real_user->addFollowing(two->real_user);
 
 }
