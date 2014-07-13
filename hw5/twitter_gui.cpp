@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
 		string tweeter = person;
 
 		DateTime* temp_date = new DateTime(h,mn,s,y,m,d);
-		Tweet* made_tweet = new Tweet((*all_users.find(tweeter)).second->real_user, *temp_date, text);
+		Tweet* made_tweet = new Tweet((*all_users.find(tweeter)).second->real_user, *temp_date, text, all_users, false);
 				
 															
 									

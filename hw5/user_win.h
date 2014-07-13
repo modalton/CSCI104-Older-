@@ -30,7 +30,8 @@ class user_win : public QWidget // you can also try QMainWindow
 
 	private slots:
 		void tweet_Click();
-		void chng_feed();
+		void chng_feed_2mention();
+		void chng_feed_2feed();
 		
 
 	private:
@@ -41,7 +42,8 @@ class user_win : public QWidget // you can also try QMainWindow
 // flip bool is so the widget knows which to switch too
 		QPushButton * post_tweet;
 		QPushButton * switch_feeds;
-		bool flip;
+		QPushButton * switch_feeds2;
+	
 //text box
 		QPlainTextEdit * tweet_text;
 //has both feed ontop of one another

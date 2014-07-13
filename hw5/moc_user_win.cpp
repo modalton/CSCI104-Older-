@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'user_win.h'
 **
-** Created: Fri Jul 11 22:31:29 2014
+** Created: Sun Jul 13 13:29:36 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_user_win[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,12 +33,14 @@ static const uint qt_meta_data_user_win[] = {
  // slots: signature, parameters, type, tag, flags
       10,    9,    9,    9, 0x08,
       24,    9,    9,    9, 0x08,
+      45,    9,    9,    9, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_user_win[] = {
-    "user_win\0\0tweet_Click()\0chng_feed()\0"
+    "user_win\0\0tweet_Click()\0chng_feed_2mention()\0"
+    "chng_feed_2feed()\0"
 };
 
 void user_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -48,7 +50,8 @@ void user_win::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         user_win *_t = static_cast<user_win *>(_o);
         switch (_id) {
         case 0: _t->tweet_Click(); break;
-        case 1: _t->chng_feed(); break;
+        case 1: _t->chng_feed_2mention(); break;
+        case 2: _t->chng_feed_2feed(); break;
         default: ;
         }
     }
@@ -87,9 +90,9 @@ int user_win::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

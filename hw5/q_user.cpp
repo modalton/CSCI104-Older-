@@ -12,12 +12,9 @@ q_user::q_user(std::string name){
 	feed = new feed_widget;
 	mention_feed = new feed_widget;
 
-	//add tweets from file to feed
-
 }
 
 q_user::q_user(){	
-//	feed = new feed_widget;
 
 	}
 
@@ -44,55 +41,21 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
    tm *ltm = localtime(&now);
 
    DateTime* temp_date = new DateTime(1+ltm->tm_hour,1+ltm->tm_min,1+ltm->tm_sec,1900 + ltm->tm_year,1 + ltm->tm_mon, ltm->tm_mday);
-   Tweet* made_tweet = new Tweet(real_user, *temp_date, text);
+   Tweet* made_tweet = new Tweet(real_user, *temp_date, text, master_list, true);
 
-//check for @ mention tweets
-   if(text.find('@')==0){
-		std::istringstream split(text);
-		std::string name;
-		getline(split,name, ' ');
-		
-
-		std::string real_name = name.substr(1);
-		if(master_list.find(real_name)!= master_list.end())
-			{(master_list.find(real_name))->second->real_user->add_mentions_tweet(made_tweet);
-			 (master_list.find(real_name))->second->app_mentions_feed(made_tweet->FullTweet());
-			 (master_list.find(real_name))->second->app_feed(made_tweet->FullTweet());
-			  feed->append_feed(made_tweet->FullTweet());return;
-			}
-		
-
-	}
-
-	
- 	//find whos makeing the tweet and call functions appropriatly
- 	std::set<User*>::iterator it;
- 	for(it = real_user->user_followers.begin(); it != real_user->user_followers.end();it++ ){
- 		User* p = *it;
- 		std::map<std::string, q_user*>::iterator joke;
- 		joke =master_list.find(p->name());
- 		q_user* awful = joke->second;
- 		awful->feed->append_feed(made_tweet->FullTweet());
- 	}
-
-
-   
-   feed->append_feed(made_tweet->FullTweet());
-
- 
 
 }
 
-void q_user::reset_feed(std::map<std::string, q_user*> &master_list){
+//populate the feeds on first initialization with sorted tweets
+void q_user::reset_feed(){
 	for(int i =0; i < real_user->tweets().size(); i++){
 		feed->append_feed(real_user->tweets().get(i)->FullTweet());
 	}
 
 
 	for(int i =0; i < real_user->mention_tweets().size(); i++){
-		feed->append_feed(real_user->mention_tweets().get(i)->FullTweet());
+		mention_feed->append_feed(real_user->mention_tweets().get(i)->FullTweet());
 	}
-
 
 }
 

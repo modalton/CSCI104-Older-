@@ -29,8 +29,10 @@ class Tweet
    */
   
 
-  Tweet(User* user, DateTime& time, std::string& text);
+  Tweet(User* user, DateTime& timer, std::string& text);
 
+//constructor that can access q_user feeds
+  Tweet(User* user, DateTime& timer, std::string& text, std::map<std::string, q_user*>& master_list, bool realtime);
   
 
   /**

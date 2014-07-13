@@ -28,7 +28,7 @@ class q_user : public QObject  // you can also try QMainWindow
 	public slots:
 		void new_tweet(std::string text, std::map<std::string, q_user*> &master_list);
 		void following_new(q_user* two);
-		void reset_feed(std::map<std::string, q_user*> &master_list);
+		void reset_feed();
 
 
 
