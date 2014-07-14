@@ -1,0 +1,12 @@
+Run the following to use my #Twitter QT APP
+
+qmake -project
+qmake
+make
+
+Then run the executable with the file you want
+the program to start with
+
+ex:  ./hw5 input.file
+
+Don't have too much fun!
