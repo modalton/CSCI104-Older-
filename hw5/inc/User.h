@@ -53,6 +53,8 @@ class User {
 
   AList<Tweet*> mention_tweets();
 
+  AList<Tweet*> get_user_tweets();
+
   /**
    * Adds a follower to this users set of followers
    * 
@@ -91,6 +93,8 @@ class User {
 
  void getFeed();
 
+ bool mutualFriend(User* other);
+
  std::string getString();
 
  std::string followingString();
@@ -107,7 +111,7 @@ class User {
     AList<Tweet*> mention_feed;
  
 
-   
+//all tweets by user. used for deallocating memory at the end 
    AList<Tweet*> user_tweets;
    
    

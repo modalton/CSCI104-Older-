@@ -12,7 +12,10 @@ User::User(){
 }
 
  User::~User(){
- 
+ 	int temp = user_tweets.size();
+ 	for(int i = 0; i< temp; i++){
+ 		delete user_tweets.get(i);
+ 	}
 
  }
 
@@ -25,13 +28,22 @@ bool User::operator==(const User& other) const{
 
 Set<User*> User::followers(){return user_followers;}
 
+Set<User*> User::following(){return user_following;}
+
 void User::addFollowing(User* u){ 
 	if(user_following.find(u)!= user_following.end()){ return;}
 	this->user_following.add(u);u->addFollower(this); }
 
 void User::addFollower(User* u){ this->user_followers.add(u); }
 
-void User::addTweet(Tweet* t){user_tweets.insert(0,t); }
+void User::addTweet(Tweet* t){	
+	int f_size = user_tweets.size();
+	if(f_size==0){user_tweets.insert(0,t);}
+	for (int i = 0; i < f_size; ++i)
+		{
+		if(*user_tweets.get(i) < *t){user_tweets.insert(i,t); break;}
+		if(i == f_size-1){user_tweets.insert(f_size,t);}
+	}}
 
 void User::add_mentions_tweet(Tweet* t){
 	int f_size = mention_feed.size();
@@ -66,6 +78,9 @@ void User::pushTweet(Tweet* t){
 AList<Tweet*> User::tweets(){return feed; 
 }
 
+AList<Tweet*> User::get_user_tweets(){return user_tweets;
+}
+
 AList<Tweet*> User::mention_tweets(){return mention_feed; 
 }
 
@@ -90,6 +105,14 @@ std::string User::followingString(){
 
 	return output;
 }
+
+bool User::mutualFriend(User* other){
+	if((user_followers.find(other) != user_followers.end()) && (user_following.find(other) != user_following.end() ))
+		{return true;}
+	else {return false;}
+
+	}
+
 
 std::string User::getString(){
 	std::string final ="\n\n" + username + " \n";

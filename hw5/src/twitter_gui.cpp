@@ -94,8 +94,8 @@ int main(int argc, char *argv[]) {
 		string text = content;
 		string tweeter = person;
 
-		DateTime* temp_date = new DateTime(h,mn,s,y,m,d);
-		Tweet* made_tweet = new Tweet((*all_users.find(tweeter)).second->real_user, *temp_date, text, all_users, false);
+		DateTime temp_date(h,mn,s,y,m,d);
+		Tweet* made_tweet = new Tweet((*all_users.find(tweeter)).second->real_user, temp_date, text, all_users, false);
 				
 															
 									
@@ -107,12 +107,16 @@ int main(int argc, char *argv[]) {
 	
 
 	one_more_class final(all_users);
-
-
-
 	final.show();
 
 
+//causes the application to execute
+    app.exec();
 
-	return app.exec();
+//deconstruct all users (users deconstruct thier tweets)
+	map<string,q_user*>::iterator it;
+	for(it = all_users.begin(); it!= all_users.end(); it++){
+		delete it->second->real_user;
+	}
+
 }

@@ -3,6 +3,8 @@
 
 one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget(){
 
+		setWindowTitle("#Twitter");
+
 		master_list = &example;
 //stacked widget for user wins
 		stackedWidget = new QStackedWidget;
@@ -62,7 +64,7 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example): QWidget
 
 						}
 
-
+//takes button inputs and calls function to follow them 
 void one_more_class::add_follower(){
 	std::string p1 = user_select->currentText().toStdString();
 	std::string p2 = follow_select->currentText().toStdString();
@@ -87,14 +89,14 @@ void one_more_class::change_user(){
 
 void one_more_class::make_feed(){
 	std::string filename = 	input->text().toStdString() + ".feed";
-	//std::ofstream output(filename.c_str());
+	std::ofstream output(filename.c_str());
 
 	std::string users;
 	Set<Tweet> all_tweets;
 	AList<Tweet*>final_list;
 
-	//output<<master_list->size() << "\n";
-	std::cout<<master_list->size() << "\n";
+	output<<master_list->size() << "\n";
+	
 
 	std::map<std::string,q_user*>::iterator it;
 		for (it=master_list->begin(); it!=master_list->end(); ++it){
@@ -103,25 +105,25 @@ void one_more_class::make_feed(){
 			users+= "\n";
 
 			//copy construct alist of each users tweets and add to a set (set keeps them unique & in order)
-			AList<Tweet*> temp_list = temp->real_user->tweets();
+			AList<Tweet*> temp_list = temp->real_user->get_user_tweets();
 			for(int i = 0; i<temp_list.size(); i++){
 				all_tweets.add(*temp_list.get(i));
 			}
 		}
 
-	std::cout<<users;
+	output<<users;
 //iterate through unique and ordered set of tweets to get final list
 	std::set<Tweet>::iterator done;
 		for(done=all_tweets.begin(); done!=all_tweets.end(); done++){
 			Tweet really = *done;
-			std::cout<< really;
+			output<< really;
 		}
 
 
 
 
-
-	//output.close();
+//close file when were done with it
+	output.close();
 
 
 }

@@ -40,8 +40,8 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
    time_t now = time(0);
    tm *ltm = localtime(&now);
 
-   DateTime* temp_date = new DateTime(1+ltm->tm_hour,1+ltm->tm_min,1+ltm->tm_sec,1900 + ltm->tm_year,1 + ltm->tm_mon, ltm->tm_mday);
-   Tweet* made_tweet = new Tweet(real_user, *temp_date, text, master_list, true);
+   DateTime temp_date(1+ltm->tm_hour,1+ltm->tm_min,1+ltm->tm_sec,1900 + ltm->tm_year,1 + ltm->tm_mon, ltm->tm_mday);
+   Tweet* made_tweet = new Tweet(real_user, temp_date, text, master_list, true);
 
 
 }

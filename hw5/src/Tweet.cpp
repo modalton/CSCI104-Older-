@@ -2,6 +2,8 @@
 
 Tweet::Tweet(){}
 
+
+
 Tweet::Tweet(const Tweet& other){
 	_poster = other._poster;
 	_time = other._time;
@@ -38,13 +40,22 @@ Tweet::Tweet(const Tweet& other){
 		if(master_list.find(real_name)!= master_list.end())
 			{//add a mentions to user
 			 (master_list.find(real_name))->second->real_user->add_mentions_tweet(this);
+			 //see if mutual followers
+			 if((master_list.find(real_name))->second->real_user->mutualFriend(user)){
+			 	master_list.find(real_name)->second->real_user->updateFeed(this);
+			 	user->updateFeed(this);
+			 }
 			 if(realtime){
 					 //update mentioned q_user mention FEED
 					 (master_list.find(real_name))->second->app_mentions_feed(this->FullTweet());
-					 //update mentioned real users FEED
-					 (master_list.find(real_name))->second->app_feed(this->FullTweet());
-					 //update tweeters FEED
-					 (master_list.find(user->name()))->second->app_feed(this->FullTweet());}
+					 
+					 //updates feed if mutal followers
+					 if((master_list.find(real_name))->second->real_user->mutualFriend(user)){
+						 //update mentioned q users FEED	
+						 (master_list.find(real_name))->second->app_feed(this->FullTweet());
+						 //update tweeters FEED
+						 (master_list.find(user->name()))->second->app_feed(this->FullTweet());}}
+			 user->addTweet(this);
 			 return;
 			}
 		}
@@ -65,6 +76,7 @@ Tweet::Tweet(const Tweet& other){
 
  	}
  //use old user class function to push to friends underlying data where it will be sorted
+ 		user->addTweet(this);
  		user->pushTweet(this);
 
 
