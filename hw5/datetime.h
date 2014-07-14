@@ -25,14 +25,14 @@ struct DateTime
    *
    * @return result of less-than comparison of timestamp
    */
-  bool operator<(const DateTime& other);
+  bool operator<(const DateTime& other) const;
 
   /**
    * Return true if the timestamp is greater-than other's
    *
    * @return result of greater-than comparison of timestamp
    */
-  bool operator>(const DateTime& other);
+  bool operator>(const DateTime& other) const;
 
   /**
    * Outputs the timestamp to the given ostream in format:

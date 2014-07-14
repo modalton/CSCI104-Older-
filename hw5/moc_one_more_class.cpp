@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'one_more_class.h'
 **
-** Created: Sun Jul 13 13:29:33 2014
+** Created: Sun Jul 13 16:57:48 2014
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

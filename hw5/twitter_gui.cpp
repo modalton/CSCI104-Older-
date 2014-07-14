@@ -25,12 +25,19 @@ int main(int argc, char *argv[]) {
 	string line;
 	int members;
 	map<string, q_user*> all_users;
-	ifstream file(argv[1]);   
+
+
+//try to open file
+	ifstream file(argv[1]);  
+		if(file.fail()){
+			cout<<"Please input proper file\n";exit(1);
+		} 
+//get/check members int
 	getline(file,line);
 	stringstream ss(line); 
-	if((ss>>members).fail()){
-		cout<<"Please input proper file\n";exit(1);} 
-		ss>>members;
+		if((ss>>members).fail()){
+			cout<<"Please input proper file\n";exit(1);} 
+			ss>>members;
 
 	//for amount of members specified above we iterate and add them 
 	//to our set of user pointers

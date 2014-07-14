@@ -13,12 +13,12 @@ class Set : public std::set<T>{
 
       void add (const T & item);
 
-  //  Set<T> setIntersection (const Set<T> & other) const;
+    Set<T> setIntersection (const Set<T> & other) const;
       /* Returns the intersection of the current set with other.
          That is, returns the set of all items that are both in this
          and in other. */
 
-  //  Set<T> setUnion (const Set<T> & other) const;
+    Set<T> setUnion (const Set<T> & other) const;
       /* Returns the union of the current set with other.
          That is, returns the set of all items that are in this set
          or in other (or both).

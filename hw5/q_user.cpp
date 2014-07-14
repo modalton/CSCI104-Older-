@@ -48,13 +48,13 @@ void q_user::new_tweet(std::string text, std::map<std::string, q_user*> &master_
 
 //populate the feeds on first initialization with sorted tweets
 void q_user::reset_feed(){
-	for(int i =0; i < real_user->tweets().size(); i++){
-		feed->append_feed(real_user->tweets().get(i)->FullTweet());
+	for(int i = real_user->tweets().size(); i != 0; i--){
+		feed->append_feed(real_user->tweets().get(i-1)->FullTweet());
 	}
 
 
-	for(int i =0; i < real_user->mention_tweets().size(); i++){
-		mention_feed->append_feed(real_user->mention_tweets().get(i)->FullTweet());
+	for(int i =real_user->mention_tweets().size(); i!=0; i--){
+		mention_feed->append_feed(real_user->mention_tweets().get(i-1)->FullTweet());
 	}
 
 }

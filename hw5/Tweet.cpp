@@ -1,5 +1,12 @@
 #include "Tweet.h"
 
+Tweet::Tweet(){}
+
+Tweet::Tweet(const Tweet& other){
+	_poster = other._poster;
+	_time = other._time;
+	_text= other._text;
+}
 
  Tweet::Tweet(User* user, DateTime& timer, std::string& text){
  	_poster=user;

@@ -42,22 +42,28 @@
     return Result;
   }
 
-
- bool DateTime::operator<(const DateTime& other){
- 	if(yr>other.yr){return false;}
+//less than
+ bool DateTime::operator<(const DateTime& other) const{
+ 	if(yr<other.yr){return true;}
+  if(yr>other.yr){return false;}
+  if(mn<other.mn){return true;}
   if(mn>other.mn){return false;}
+  if(d<other.d){return true;}
   if(d>other.d){return false;}
- 	if(h>other.h){return false;}
- 	if(m>other.m){return false;} 
+ 	if(h<other.h){return true;}
+  if(h>other.h){return false;}
+ 	if(m<other.m){return true;} 
+  if(m>other.m){return false;} 
+  if(s<other.s){return true;}
   if(s>other.s){return false;}
   if(s==other.s && d==other.d &&m==other.m && h==other.h && mn==other.mn && yr==other.yr){return false;}
-  	return true;}
+    return false;}
 
- bool DateTime::operator>(const DateTime& other){
- 	if(s==other.s && d==other.d &&m==other.m && h==other.h && mn==other.mn && yr==other.yr){return false;}
- 	if((*this<other) ==false){return true;}
-  return false;
- }
+ bool DateTime::operator>(const DateTime& other) const{
+ 	  if(*this<other){return false;}
+  if(s==other.s && d==other.d &&m==other.m && h==other.h && mn==other.mn && yr==other.yr){return false;}
+    return false;}
+ 
 
 
 std::ostream& operator<<(std::ostream& os, const DateTime& other){
@@ -71,7 +77,7 @@ std::ostream& operator<<(std::ostream& os, const DateTime& other){
   if(other.m<10){os<<"0";}
   os << other.m << ":";
   if(other.s<10){os<<"0";}
-  os << other.m ;
+  os << other.s ;
 
   return os;
  }

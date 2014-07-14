@@ -9,15 +9,20 @@ Set<T>::Set(const Set<T> & other){} //copy constructor
 
 template <class T>  //deconstructor
 Set<T>::~Set(){}
-
+*/
 template <class T>
 Set<T> Set<T>::setIntersection (const Set<T> & other) const{
 	Set<T> intersect;
 	Set<T> new_obj;
-	for (int i = 0; i < internalStorage.size(); i++)
-	
-	{if(other.contains(internalStorage.get(i))){ new_obj.add(internalStorage.get(i)); std::cout<<"intersect "<<internalStorage.get(i)<<"\n"; }}
 
+	typename std::set<T>::iterator it;
+		 	for(it = this->begin(); it != this->end();it++ ){
+			 		if(other.find(it) != other.end()){ 
+			 			new_obj.add(it);
+			 		}
+			 }
+
+	
 	return new_obj;
 }
      
@@ -25,18 +30,22 @@ Set<T> Set<T>::setIntersection (const Set<T> & other) const{
 template <class T>
 Set<T> Set<T>::setUnion (const Set<T> & other) const{
 	Set<T> new_obj;
-	for (int i = 0; i < internalStorage.size(); i++)
-	{ new_obj.add(internalStorage.get(i));std::cout<< internalStorage.get(i)<< "\n";}
+	typename std::set<T>::iterator it;
+		 	for(it = this->begin(); it != this->end();it++ ){
+			 		new_obj.add(it);
+			 	}
 
-	for (int i=0; i < other.size(); i++)
-		{if(new_obj.contains(other.internalStorage.get(i))){}
-		else{new_obj.add(other.internalStorage.get(i)); std::cout<< other.internalStorage.get(i)<< "\n";}
-				}
+
+	typename std::set<T>::iterator it2;
+		 	for(it2 = other.begin(); it2 != other.end();it2++ ){
+			 		new_obj.add(it2);
+			 	}
+
 
 	return new_obj;
 }
 
-
+/*
 template <class T> 
 void Set<T>::add(const T & other){
 	if(this->contains(other)){ throw std::invalid_argument("void Set<T>::add(const T & other)- already in set");}

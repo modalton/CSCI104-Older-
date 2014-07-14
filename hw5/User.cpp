@@ -38,7 +38,7 @@ void User::add_mentions_tweet(Tweet* t){
 	if(f_size==0){mention_feed.insert(0,t);}
 	for (int i = 0; i < f_size; ++i)
 		{
-		if(mention_feed.get(i) < t){mention_feed.insert(i,t); break;}
+		if(*mention_feed.get(i) < *t){mention_feed.insert(i,t); break;}
 		if(i == f_size-1){mention_feed.insert(f_size,t);}
 	}
 }
@@ -48,7 +48,7 @@ void User::updateFeed(Tweet* t){
 	if(f_size==0){feed.insert(0,t);}
 	for (int i = 0; i < f_size; ++i)
 		{
-		if(feed.get(i) < t){feed.insert(i,t); break;}
+		if(*feed.get(i) < *t){feed.insert(i,t); break;}
 		if(i == f_size-1){feed.insert(f_size,t);}
 	}
 
@@ -63,10 +63,10 @@ void User::pushTweet(Tweet* t){
 	}
 }
 
-AList<Tweet*> User::tweets(){return feed; //WHY DID I NEED COPY CONSTRUCTOR/ = op FOR THIS 
+AList<Tweet*> User::tweets(){return feed; 
 }
 
-AList<Tweet*> User::mention_tweets(){return mention_feed; //WHY DID I NEED COPY CONSTRUCTOR/ = op FOR THIS 
+AList<Tweet*> User::mention_tweets(){return mention_feed; 
 }
 
 void User::getFeed(){
@@ -76,6 +76,19 @@ void User::getFeed(){
 	for(int i=0; i<feed.size(); i++){
 		output << *(feed.get(i));
 	}
+}
+
+std::string User::followingString(){
+	std::string output = name() + " ";
+	std::set<User*>::iterator it;
+		 	for(it = user_following.begin(); it != user_following.end();it++ ){
+		 			User* temp = *it;
+			 		output += temp->name();
+			 		output+= " ";
+			 	}
+
+
+	return output;
 }
 
 std::string User::getString(){

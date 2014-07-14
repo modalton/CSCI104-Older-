@@ -93,6 +93,8 @@ class User {
 
  std::string getString();
 
+ std::string followingString();
+
 
    Set<User*> user_followers;
    Set<User*> user_following; //move back to priv

@@ -24,9 +24,8 @@ class Tweet
    */
   Tweet();
 
-  /**
-   * Constructor 
-   */
+
+  Tweet(const Tweet& other);
   
 
   Tweet(User* user, DateTime& timer, std::string& text);
@@ -54,7 +53,7 @@ class Tweet
    *
    * @return result of less-than comparison of tweet's timestamp
    */
-  bool operator<(const Tweet& other){
+  bool operator<(const Tweet& other) const{
     return _time < other._time;
   }
 
@@ -63,7 +62,7 @@ class Tweet
    *
    * @return result of greater-than comparison of tweet's timestamp
    */
-  bool operator>(const Tweet& other){
+  bool operator>(const Tweet& other) const{
     return _time > other._time;
   }
 

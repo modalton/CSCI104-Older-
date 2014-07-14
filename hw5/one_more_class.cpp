@@ -87,17 +87,41 @@ void one_more_class::change_user(){
 
 void one_more_class::make_feed(){
 	std::string filename = 	input->text().toStdString() + ".feed";
-	std::ofstream output(filename.c_str());
+	//std::ofstream output(filename.c_str());
 
-	std::string file;
+	std::string users;
+	Set<Tweet> all_tweets;
+	AList<Tweet*>final_list;
+
+	//output<<master_list->size() << "\n";
+	std::cout<<master_list->size() << "\n";
+
 	std::map<std::string,q_user*>::iterator it;
 		for (it=master_list->begin(); it!=master_list->end(); ++it){
 			q_user* temp = it->second;
-			file+= temp->real_user->getString();
+			users+= temp->real_user->followingString();
+			users+= "\n";
+
+			//copy construct alist of each users tweets and add to a set (set keeps them unique & in order)
+			AList<Tweet*> temp_list = temp->real_user->tweets();
+			for(int i = 0; i<temp_list.size(); i++){
+				all_tweets.add(*temp_list.get(i));
+			}
 		}
 
-	output<< file ;
-	output.close();
+	std::cout<<users;
+//iterate through unique and ordered set of tweets to get final list
+	std::set<Tweet>::iterator done;
+		for(done=all_tweets.begin(); done!=all_tweets.end(); done++){
+			Tweet really = *done;
+			std::cout<< really;
+		}
+
+
+
+
+
+	//output.close();
 
 
 }
