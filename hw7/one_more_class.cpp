@@ -68,6 +68,7 @@ one_more_class::one_more_class(std::map<std::string, q_user*>& example, std::map
 		final->addLayout(bottom_bar);
 		final->setSpacing(40);
 		setFixedWidth(750);
+		setMinimumHeight(650);
 		setLayout(final);
 
 		been_called = false;

@@ -96,7 +96,6 @@ void Tweet::spliceHashtags(){
 		getline(splice,hash, ' ');
 	    found=_text.find_first_of("#",found+hash.length());
 	    _hashtags.insert(hash);
-	    std::cout<<hash <<"\n";
 	  }
 
 	  

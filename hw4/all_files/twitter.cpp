@@ -103,10 +103,6 @@ while(getline(file1,line)){
 								}
 							}
 
-for (int i = 0; i < members; ++i)
-{
-	(*all_users.commonsense(i))->getFeed();
-}
 
 }
 

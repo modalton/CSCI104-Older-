@@ -9,6 +9,7 @@
 #include "q_user.h"
 
 
+
 /* Forward declaration */
 class User;
 class q_user;

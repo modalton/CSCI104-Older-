@@ -1,4 +1,4 @@
-//User::User(){delete;}
+
 #include "User.h"
 #include <fstream>
 #include <cstring>

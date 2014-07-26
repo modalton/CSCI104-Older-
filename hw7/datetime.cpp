@@ -62,7 +62,7 @@
  bool DateTime::operator>(const DateTime& other) const{
  	  if(*this<other){return false;}
   if(s==other.s && d==other.d &&m==other.m && h==other.h && mn==other.mn && yr==other.yr){return false;}
-    return false;}
+    return true;}
  
 
 
